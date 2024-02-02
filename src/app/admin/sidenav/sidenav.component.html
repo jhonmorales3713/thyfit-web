@@ -1,0 +1,64 @@
+<nav id="sidebar" class="active">
+    <div class="p-2">
+<ul class="list-unstyled components mb-5 menu-item" [ngClass]="{'hover' :sideNavVisible, 'shrink-border':!sideNavVisible}">
+    <li class="active"(click)="subMenu($event)">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle initial"  [ngClass]="sideNavVisible ? 'expanded ': 'shrinked'">
+            <i class="fa fa-home"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">{{ T.Sidenav.Label.Home }}</span></a>
+            <ul class="list-unstyled collapse sub-menu" id="homeSubmenu">
+                <li>
+                    <a href="#" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
+                        <i class="fa fa-home"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Home 1</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
+                        <i class="fa fa-home"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Home 1</span>
+                    </a>
+                </li>
+            </ul>
+        </li><li class="active"(click)="subMenu($event)">
+    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle initial"  [ngClass]="sideNavVisible ? 'expanded ': 'shrinked'">
+        <i class="fa fa-home"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Home</span></a>
+        <ul class="list-unstyled collapse sub-menu" id="homeSubmenu">
+            <li>
+                <a href="#" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
+                    <i class="fa fa-home"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Home 1</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
+                    <i class="fa fa-home"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Home 1</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="active"(click)="subMenu($event)">
+        <a href="#foodSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle initial"  [ngClass]="sideNavVisible ? 'expanded ': 'shrinked'">
+            <i class="bx bx-food-menu"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">{{ T.Sidenav.Label.Food }}</span>
+        </a>
+        <ul class="list-unstyled collapse sub-menu" id="foodSubmenu">
+            <li>
+                <a href="#" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
+                    <i class="bx bx-bowl-rice"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">{{ T.Sidenav.Label.Foods }}</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
+                    <i class="fa fa-home"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Home 1</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#"><i class="fa fa-home"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Home</span></a>
+    </li>
+</ul>
+
+<div class="footer">
+    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright ©<script>document.write(new Date().getFullYear());</script>2024 All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+</div>
+
+</div>
+</nav>

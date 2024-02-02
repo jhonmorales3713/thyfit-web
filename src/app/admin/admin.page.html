@@ -1,0 +1,9 @@
+<div class="container-fluid pl-0 pr-0">
+    <admin-header (sideNavToggled)="sideNavVisible = $event"></admin-header>
+    <main>
+        <admin-sidenav [sideNavVisible]="sideNavVisible" [ngClass]="{'admin-side-nav-open': sideNavVisible}"></admin-sidenav>
+        <div class="d-area" [ngClass]="{'d-area-shrink': sideNavVisible}">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

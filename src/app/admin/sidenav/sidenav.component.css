@@ -1,0 +1,99 @@
+#sidebar ul.components {
+    padding: 0;
+}
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+a {
+    list-style-type: none;
+    text-decoration: none;
+}
+.menu-item ul li.active > a {
+    background: transparent;
+    color: white;
+}
+.menu-item li a {
+    padding: 10px 11px;
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+}
+.menu-item.shrink-border li {
+    border-bottom: 1px solid rgba(208, 208, 208, 0.1);
+}
+.dropdown-toggle ul li {
+    padding: 5px 5px;
+}
+.menu-item li a i {
+    padding-right: 13px;
+    opacity: 1 !important;
+}
+.menu-item.hover li a:hover {
+    background-color:#3a3a3a;
+    transition: border-color 200ms ease-in;
+}
+.dropdown-toggle.expanded::after {
+    display: inline-flex;
+    position: absolute;
+    margin-top: 13px;
+    right: 15px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    opacity: 1;
+    transition: opacity 200ms ease-in;
+}
+.dropdown-toggle.shrinked::after {
+    display: inline-flex;
+    position: absolute;
+    margin-top: 13px;
+    right: 15px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+}
+.dropdown-toggle.expanded::after {
+    transform: rotate(180deg) ;
+    transition: all linear 0.25s;
+}
+.dropdown-toggle.collapsed::after {
+    transform: rotate(0deg);
+    transition: all linear 0.25s;
+}
+.dropdown-toggle.initial::after {
+    transform: rotate(0deg);
+}
+.shrinked-list {
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+}
+.unshrinked-list {
+    opacity: 1;
+    transition: opacity 200ms ease-in;
+}
+
+.shrinked-sub-list {
+    /* opacity: 0; */
+    transition: padding 200ms ease-in;
+    padding-left: 0px;
+}
+.unshrinked-sub-list {
+    opacity: 1;
+    padding-left: 30px !important;
+    transition: padding 200ms ease-in;
+}
+.sub-menu li {
+    padding-top:0px;
+    padding-bottom:0px;
+    border: none !important;
+}
+.sub-menu li a{
+    padding-top: 5px !important;
+    padding-bottom:5px !important;
+}
+.sub-menu li:hover {
+    background-color:#3a3a3a;
+    transition: border-color 200ms ease-in;
+}

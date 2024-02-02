@@ -1,0 +1,20 @@
+.show-nav {
+    width: 200px;
+    transition: 0.1s linear;
+}
+.hide-nav {
+    max-width: 0px !important;
+    padding:0px !important;
+    transition: 0.1s linear;
+}
+.side-nav {
+    max-width: 200px;
+    float:left;
+}
+.b-white {
+    border: 1px solid white !important;
+}
+.dashboard-item {
+    max-width: 230px;
+    margin-top: 5px;
+}

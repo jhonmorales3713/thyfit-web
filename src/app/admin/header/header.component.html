@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark px-2">
+    <div class="side-nav-button p-2 me-3 text-light" (click)="sideNavToggle()">
+        <i class="fa  fa-bars"></i>
+    </div>
+    <a class="navbar-brand px-4" href="#">ThyFit</a>
+    <div class="navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item drodpown profile-logo dropstart">
+                <a class="nav-link dropdown-toggle" href="#" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Menu
+                </a>
+                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">My Profile</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="logOut()">Log Out</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

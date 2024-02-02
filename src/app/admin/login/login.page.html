@@ -1,0 +1,38 @@
+<div class="login" (ngForm)="form">
+    <div class="col-12 col-md-6 login-background text-center d-flex align-items-center justify-content-center">
+        <div>
+            <h3 class="text">Welcome to</h3>
+            <h1 class="text mt-5">ThyFit</h1>
+            <span class="text">Track what you eat to be what you want.</span>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+        <form name="login" class="login-form">
+            <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('username')}">
+                <h4>Login to your account</h4><br>
+                <label>Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input type="text" name="username" class="form-control form-control-sm" placeholder="Enter username" [(ngModel)]="form.username">   
+                </div>
+                <ui-error name="username" [form]="form" *ngIf="form.hasControlError('username')"></ui-error> 
+            </div>
+            <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('password')}">
+                <label>Password</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                    </div>
+                    <input type="password" name="password" class="form-control form-control-sm" placeholder="Enter password" [(ngModel)]="form.password">
+                </div>
+                <ui-error name="password" [form]="form" *ngIf="form.hasControlError('password')"></ui-error>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-secondary btn-sm mr-2">Sign Up</button>
+                <button type="button" (click)="logIn()" class="btn btn-primary btn-sm">Log In</button>
+            </div>
+        </form>
+    </div>
+</div>

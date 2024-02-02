@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 700 !important;
+}
+.mt-125 {
+    margin-top: 1.25px;
+}
+.form-label {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.control-error input{
+  border: 1px solid red;
+}
+.login, .login-background {
+  height: 100vh;
+}
+.login-form {
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 20px 50px rgba(0, 0, 0, 0.12)
+}
+@media screen and (min-width: 1024px) {
+  .login-form {
+    margin: 15px;
+    padding: 50px 20px 50px 20px;
+    width: 475px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .login {
+    display: flex;
+  }
+}
+
+.login-background {
+  background-color: #04d0b1;
+
+}
+.login-background .text {
+  color:white;
+}
