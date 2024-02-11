@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
 import { Translations } from 'src/app/shared/translation';
 import { LoginForm } from './login.form';
 import { FormUtils } from 'src/app/shared/form-utils';
@@ -12,26 +12,33 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
   templateUrl: './login.page.html',
   styleUrls: ['./login.css']
 })
-export class LoginPage implements OnInit{
+export class LoginPage implements OnInit {
   form: LoginForm = new LoginForm();
-  constructor(public loginApiService: LogInService, 
-    public notificationService: AppNotificationService, 
-    public router: Router, 
-    public authService: AuthenticationService ) {
-
+  constructor(
+    public notificationService: AppNotificationService,
+    public router: Router,
+    private viewContainerRef: ViewContainerRef,
+    public authService: AuthenticationService) {
   }
-  async ngOnInit() {
-    if (await this.authService.isLoggedIn()) {
+  ngOnInit() {
+    this.notificationService.setRootViewContainerRef(this.viewContainerRef);  
+    if (this.authService.isLoggedIn()) {
       this.router.navigate(["/admin/home"]);
     }
   }
   logIn() {
-    this.loginApiService.logIn(this.form.toPayLoad()).subscribe(data => {
-      this.router.navigate(["/admin/home"]);
-      this.notificationService.success("Success","Welcome!");
-    }, failedRequest => {
-      FormUtils.setErrors(failedRequest.error.errors,this.form)
-      this.notificationService.error("Error","Please check the errors.");
-    });
+    this.authService.logIn(this.form.toPayLoad()).subscribe(
+      {
+        next: (data) => {
+          this.notificationService.success("Success","Welcome!");
+          this.authService.setIsAuthenticated(data);
+          this.router.navigate(["/admin/home"]);
+
+        },error: (failedRequest) => {
+          FormUtils.setErrors(failedRequest.error.errors,this.form)
+          this.notificationService.error("Error","Please check the errors.");
+        }
+      }
+    )
   }
 }

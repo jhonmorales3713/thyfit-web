@@ -16,10 +16,11 @@ export class ApiService {
         private httpClient: HttpClient, 
     ) {
     }
-    setParameters(parameters = []) {
+    setParameters(parameters = []): ApiService {
         for (const [key, value] of Object.entries(parameters)) {
             this.params.set(key, JSON.stringify(value));
         }
+        return this;
     }
     setHeaders(headers = []) {
         for (const [key, value] of Object.entries(headers)) {
@@ -30,7 +31,6 @@ export class ApiService {
         return this.httpClient.get(environment.apiUrl+endPoint, {headers: this.headers, params: this.params});
     }
     postRequest(endPoint:string, payload: any) {
-        console.log(JSON.stringify(payload));
         return this.httpClient.post(environment.apiUrl+endPoint,JSON.stringify(payload), {headers: this.headers, params: this.params});
     }
 }

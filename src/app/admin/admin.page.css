@@ -3,7 +3,7 @@ admin-header {
     width: 100%;
     top: 0px;
     height: 3rem;
-    z-index: 2;
+    z-index: 1;
 }
 main {
     position: fixed;
@@ -42,12 +42,14 @@ admin-sidenav {
     padding-right: 65px;
     padding-left: 15px;
     padding-top: 10px;
-    height: 100vh;
     width: 100%;
-    transition: left 250ms ease-in;
+    height: 100vh;
+    overflow-y: scroll;
+    transition: all 250ms ease-in;
 }
 .d-area-shrink {
     width: calc(100% — 250px);
     left: 250px;
-    transition: left 250ms ease-out;
+    transition: all 250ms ease-out;
+    max-width: 570px;
 }

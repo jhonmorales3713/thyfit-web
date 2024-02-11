@@ -13,17 +13,12 @@ export class AuthenticationGuard {
   canActivateChild (
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-    this.authService.isLoggedIn().then((response) => response?.json())
-    .then((user) => {
-      if(!user) {
+    if(!this.authService.isLoggedIn()) {
         this.router.navigate(["/login"]);
         return false;
       } else {
         return true;
       }
-    });
-    return true;
+    }
   }
   
-}

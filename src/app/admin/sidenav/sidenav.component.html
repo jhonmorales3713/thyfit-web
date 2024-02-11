@@ -38,13 +38,8 @@
         </a>
         <ul class="list-unstyled collapse sub-menu" id="foodSubmenu">
             <li>
-                <a href="#" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
+                <a href="/admin/foods" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
                     <i class="bx bx-bowl-rice"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">{{ T.Sidenav.Label.Foods }}</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
-                    <i class="fa fa-home"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Home 1</span>
                 </a>
             </li>
         </ul>

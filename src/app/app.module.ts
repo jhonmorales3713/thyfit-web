@@ -10,11 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiService } from './shared/api.service';
 import { LoginPage } from './admin/login/login.page';
 import { LogInService } from './admin/login/login.service';
+import { ModalService } from './shared/services/modal.service';
+import { AppNotificationService } from './shared/services/notification.service';
+import { FoodPage } from './admin/food/food.page';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPage,
+    FoodPage,
   ],
   imports: [
     CommonModule,
@@ -22,15 +26,13 @@ import { LogInService } from './admin/login/login.service';
     SharedModule,
     RouterModule,
     AppRoutingModule,
-    AdminModule,
   ],
-  providers: [ApiService, LogInService],
+  providers: [ApiService, LogInService, ModalService, AppNotificationService],
   bootstrap: [AppComponent],
   exports: [
     CommonModule,
     BrowserAnimationsModule,
     SharedModule,
-    AdminModule,
   ]
 })
 export class AppModule { }

@@ -5,10 +5,23 @@ import { ApiService } from '../api.service';
   providedIn: 'root'
 })
 export class AuthenticationService extends ApiService {
+  private authenticationData: any;
 
-  public async isLoggedIn(): Promise<any> {
-    await this.getRequest("session/authenticate/").subscribe((data:any) => {
-      return data.loggedIn;
-    });
+  logIn(payload : any) {
+    let request = this.postRequest('login/', payload);
+    return request;
+  }
+
+  setIsAuthenticated (authenticationData: any) {
+    localStorage.setItem('token', authenticationData);
+  }
+
+  isLoggedIn(){
+    return !!localStorage.getItem('token');
+  }
+
+  logOut() {
+    let request = this.getRequest('logOut/');
+    return request;
   }
 }

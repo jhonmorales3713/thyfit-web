@@ -1,15 +1,16 @@
+
 <form (ngForm)="form">
-    <div class="col-12 col-sm-8">
+    <div class="col-12">
         <div class="row">
-            <div class="col-auto">
-                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('protein')}">
+            <div class="col-12 col-sm-6 col-lg-6">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('name')}">
                     <label class="form-label">{{ T.Food.Label.Name }}</label>
                     <input type="text" pInputText class="form-control form-control-sm" name="name" [(ngModel)]="form.name">
                     <ui-error name="name" [form]="form" *ngIf="form.hasControlError('name')"></ui-error>
                 </div>
             </div>
-            <div class="col-auto">
-                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('protein')}">
+            <div class="col-12 col-sm-6 col-lg-6">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('servingSize')}">
                     <label class="form-label">{{ T.Food.Label.ServingSize }}</label>
                     <input type="number" max="" class="form-control form-control-sm" name="servingSize" [(ngModel)]="form.servingSize">
                     <ui-error name="servingSize" [form]="form" *ngIf="form.hasControlError('servingSize')"></ui-error>
@@ -18,14 +19,14 @@
         </div>
         <div class="row">
             <div class="col-12 col-sm-6 col-lg-6">
-                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('protein')}">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('carbohydrate')}">
                     <label class="form-label">{{ T.Food.Label.Carbohydrate }}</label>
                     <input type="number" max="" class="form-control form-control-sm" name="carbohydrate" [(ngModel)]="form.carbohydrate">
                     <ui-error name="carbohydrate" [form]="form" *ngIf="form.hasControlError('carbohydrate')"></ui-error>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-6">
-                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('protein')}">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('calorie')}">
                     <label class="form-label">{{ T.Food.Label.Calorie }}</label>
                     <input type="number" class="form-control form-control-sm" name="calorie" [(ngModel)]="form.calorie">
                     <ui-error name="calorie" [form]="form" *ngIf="form.hasControlError('calorie')"></ui-error>
@@ -69,7 +70,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-end">
-        <button class="btn btn-success" (click)="save()">Save</button>
+        <button class="btn btn-success" type="submit" (click)="save()">Save</button>
     </div>
 </div>
 </form>

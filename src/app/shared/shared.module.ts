@@ -5,8 +5,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UiErrorComponent } from './ui-error/ui-error.component';
 import { NgbModule, NgbToast } from '@ng-bootstrap/ng-bootstrap';
-import { NotificationComponent } from './notification/notification.component';
 import { AppNotificationService } from './services/notification.service';
+import { ModalComponent } from './modal/modal.component';
+import { ModalService } from './services/modal.service';
+import { NotificationComponent } from './notification/notification.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
     imports: [
@@ -15,14 +18,15 @@ import { AppNotificationService } from './services/notification.service';
         FormsModule,
         CommonModule,
         NgbModule,
-        
     ],
     declarations: [
         UiErrorComponent,
+        ModalComponent,
+        PaginationComponent,
         NotificationComponent,
     ],
     providers: [
-        AppNotificationService,
+        ModalService,
     ],
     exports: [
         RouterModule,
@@ -30,6 +34,8 @@ import { AppNotificationService } from './services/notification.service';
         FormsModule,
         UiErrorComponent,
         NgbModule,
+        ModalComponent,
+        PaginationComponent,
         NotificationComponent
     ],
 })

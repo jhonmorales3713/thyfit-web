@@ -1,4 +1,4 @@
-import { Injectable, Input } from "@angular/core";
+import { EventEmitter, Injectable, Input } from "@angular/core";
 
 @Injectable({
     providedIn: 'root'
@@ -6,6 +6,7 @@ import { Injectable, Input } from "@angular/core";
 export class FormUtils {
     errors = [];
     hasError = false;
+    submit = new EventEmitter<number>();
     static setErrors(errors: any, form: any) {
         form.errors = errors;
         form.hasError = true;

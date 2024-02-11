@@ -57,3 +57,27 @@ input[type=number] {
 .login-background .text {
   color:white;
 }
+.nav-title {
+  margin-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.new-btn {
+  height: 30px;
+}
+.bg-main {
+  background-color: #04d0b1;
+}
+.loader {
+  margin-bottom: 10px;
+}
+.color-main {
+  color: #04d0b1;
+}
+.table th{
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+td {
+  padding: 1px 0.75rem 1px 0.75rem !important;
+}

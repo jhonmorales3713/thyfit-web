@@ -20,6 +20,9 @@ import { FoodService } from './food/food.service';
 import { UiErrorComponent } from '../shared/ui-error/ui-error.component';
 import { LogInService } from './login/login.service';
 import { LoginPage } from './login/login.page';
+import { ModalService } from '../shared/services/modal.service';
+import { AppNotificationService } from '../shared/services/notification.service';
+import { NotificationComponent } from '../shared/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,6 @@ import { LoginPage } from './login/login.page';
     AdminTopnavComponent,
     DashboardPage,
     MainAdminPage,
-    FoodPage,
     FoodNewPage,
     FoodComponent,
   ],
@@ -44,6 +46,8 @@ import { LoginPage } from './login/login.page';
     DashboardService,
     FoodService,
     ApiService,
+    ModalService,
+    AppNotificationService
   ],
 })
 export class AdminModule { }
