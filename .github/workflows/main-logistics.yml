@@ -1,6 +1,7 @@
 on: 
   push:
-    - main-logistics
+    branches:
+      - main-logistics
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
