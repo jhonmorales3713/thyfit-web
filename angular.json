@@ -14,7 +14,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": ["@canvasjs/charts", "@canvasjs/angular-charts"],
-            "outputPath": "../public_html/logistics.jhonmorales.com",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
