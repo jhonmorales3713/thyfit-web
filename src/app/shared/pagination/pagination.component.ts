@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pagination',
@@ -12,15 +13,15 @@ export class PaginationComponent implements OnInit {
     totalItems: number;
     @Output() pageChanged: EventEmitter<number> = new EventEmitter();
     ngOnInit() {
-      this.currentPage = this.result.meta.current_page;
-      this.itemsPerPage = this.result.meta.per_page;
-      this.totalItems = this.result.meta.total;
+      this.currentPage = this.result["page"] ?? 1;
+      this.itemsPerPage = this.result["limit"];
+      this.totalItems = this.result["totalRows"];
     }
     get totalPages(): number {
         return Math.ceil(this.totalItems / this.itemsPerPage);
     }
     get availablePages(): number[] {
-      const maxPagesToShow = 10;
+      const maxPagesToShow = 5;
       const totalPagesToShow = Math.min(this.totalPages, maxPagesToShow);
       const firstPage = Math.max(1, this.currentPage - Math.floor(maxPagesToShow / 2));
       const lastPage = Math.min(this.totalPages, firstPage + maxPagesToShow - 1);
@@ -32,6 +33,8 @@ export class PaginationComponent implements OnInit {
           this.currentPage = page;
           this.pageChanged.emit(page);
         }
+        console.log(page);
+        console.log(this.currentPage);
     }
   // Other component logic goes here
 }

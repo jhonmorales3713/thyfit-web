@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="nav-body">
+              <h5 class="nav-title">Inquiry</h5>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12 col-lg-10">
+        <div class='input-group form-group'>
+            <input type="text" class="form-control-sm form-control" (input)="search()" placeholder="Search Email, Reference #" [(ngModel)]="listingOption.search">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-12 col-lg-2">
+        <div class="navbar-collapse d-flex justify-content-end mt-2">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item drodpown profile-logo dropstart">
+                    <a class="nav-link dropdown-toggle p-0 text-dark" href="#" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-download  mr-2"></i>Export
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-dark dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Export to PDF</a>
+                        <a class="dropdown-item" href="#">Export to Excel</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row mt-1 mb-1">
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="form-group">
+            <label class="form-label">Item Type</label>
+            <select class="form-control form-control-sm" name="itemType" (change)="loadContent()" [(ngModel)]="listingOption.itemType">
+                <option *ngFor="let item of itemTypes" [value]="item.id">{{ item.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="form-group">
+            <label class="form-label">Delivery Type</label><br>
+            <input type="radio" name="deliveryType" [value]="DeliveryTypes.PreLoad" (change)="loadContent()" [(ngModel)]="listingOption.deliveryType"> Pre-Load
+            <input type="radio" name="deliveryType" [value]="DeliveryTypes.Load" (change)="loadContent()" [(ngModel)]="listingOption.deliveryType"> Loaded
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="form-group">
+            <label class="form-label">Cargo Type</label>
+            <select class="form-control form-control-sm" name="cargoType" (change)="loadContent()" [(ngModel)]="listingOption.cargoType">
+                <option *ngFor="let item of cargoTypes" [value]="item.id">{{ item.name }}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row mt-1 mb-1">
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="form-group">
+            <label class="form-label">Status</label>
+            <select class="form-control form-control-sm" name="status" (change)="loadContent()" [(ngModel)]="listingOption.status">
+                <option [value]="DelStatus.Pending">Pending</option>
+                <option [value]="DelStatus.Received">Received</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="form-group">
+            <label class="form-label">Target Date From</label>
+            <input type="date" name="targetDateFrom" class="form-control form-control-sm" placeholder="Target Date From" (change)="loadContent()" [(ngModel)]="listingOption.targetDateFrom">
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="form-group">
+            <label class="form-label">Target Date To</label>
+            <input type="date" name="targetDateTo" class="form-control form-control-sm" placeholder="Target Date To" (change)="loadContent()" [(ngModel)]="listingOption.targetDateTo">
+        </div>
+    </div>
+</div>
+<div class="row mt-4 mb-5">
+    <div class="col-12">
+        <div class="loader" *ngIf="isLoading">
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th (click)="sortBy('referenceNumber')"><th-arrow [sortDirection]="sortDirection" [sort]="this.listingOption.sortBy" [name]="'referenceNumber'" [description]="'Reference Number'"></th-arrow></th>
+                    <th (click)="sortBy('email')"><th-arrow [sortDirection]="sortDirection" [sort]="this.listingOption.sortBy" [name]="'email'" [description]="'Email'"></th-arrow></th>
+                    <th>Contact #</th>
+                    <th (click)="sortBy('cargoType')"><th-arrow [sortDirection]="sortDirection" [sort]="this.listingOption.sortBy" [name]="'cargoType'" [description]="'Cargo Type'"></th-arrow></th>
+                    <th (click)="sortBy('itemType')"><th-arrow [sortDirection]="sortDirection" [sort]="this.listingOption.sortBy" [name]="'itemType'" [description]="'Item Type'"></th-arrow></th>
+                    <th (click)="sortBy('deliveryType')"><th-arrow [sortDirection]="sortDirection" [sort]="this.listingOption.sortBy" [name]="'deliveryType'" [description]="'Delivery Type'"></th-arrow></th>
+                    <th class="text-right" (click)="sortBy('quantity')"><th-arrow [sortDirection]="sortDirection" [sort]="this.listingOption.sortBy" [name]="'quantity'" [description]="'Quantity'"></th-arrow></th>
+                    <th (click)="sortBy('targetDate')"><th-arrow [sortDirection]="sortDirection" [sort]="this.listingOption.sortBy" [name]="'targetDate'" [description]="'Target Date'"></th-arrow></th>
+                </tr>
+                <tr *ngFor="let inquiry of inquiries">
+                    <td><a [href]="'admin/inquiries/'+inquiry.id">{{ inquiry.referenceNumber }}</a> <span class="field-value ml-2" [innerHTML]="DeliveryStatus.format(inquiry.status)"></span></td>
+                    <td>{{ inquiry.email }}</td>
+                    <td>{{ inquiry.contactNumber }}</td>
+                    <td>{{ inquiry.cargoType.name }}</td>
+                    <td>{{ inquiry.itemType.name }}</td>
+                    <td>{{ DeliveryType.format(inquiry.deliveryType) }}</td>
+                    <td class="text-right">{{ inquiry.quantity }}</td>
+                    <td>{{ inquiry.targetDate | date }}</td>
+                </tr>
+            </table>
+        </div>
+        <app-pagination *ngIf="onLoaded && inquiries.length > 0" [result]="inquiries" (pageChanged)="navigate($event)"></app-pagination>
+    </div>
+</div>

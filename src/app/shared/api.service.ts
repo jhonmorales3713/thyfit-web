@@ -12,13 +12,19 @@ export class ApiService {
         'Authorization': `Bearer ${environment.apiKey}`
     });
     private params = new HttpParams();
+    public queryParams = '';
     constructor(
         private httpClient: HttpClient, 
     ) {
     }
     setParameters(parameters = []): ApiService {
+        this.queryParams = '';
+        this.params = new HttpParams();
         for (const [key, value] of Object.entries(parameters)) {
             this.params.set(key, JSON.stringify(value));
+            if (value) {
+                this.queryParams += key+"="+value+"&";
+            }
         }
         return this;
     }
@@ -32,5 +38,8 @@ export class ApiService {
     }
     postRequest(endPoint:string, payload: any) {
         return this.httpClient.post(environment.apiUrl+endPoint,JSON.stringify(payload), {headers: this.headers, params: this.params});
+    }
+    putRequest(endPoint:string, payload: any) {
+        return this.httpClient.put(environment.apiUrl+endPoint,JSON.stringify(payload), {headers: this.headers, params: this.params});
     }
 }

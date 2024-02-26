@@ -1,7 +1,7 @@
 export const SidenavTranslation  = {
     Label : {
-        Home : "Home",
-        Food : "Food",
-        Foods : "Foods",
+        Inquiry : "Inquiry",
+        Sales : "Sales",
+        Settings : "Settings",
     }
 }

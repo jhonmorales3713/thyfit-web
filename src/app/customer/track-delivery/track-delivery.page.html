@@ -1,0 +1,93 @@
+
+<div class="container mt-3 mb-3" *ngIf="displayAll">
+    <inquiry-search></inquiry-search>
+    <div *ngIf="displayNull">
+        <div class="row">
+            <div class="col-12">
+                <h3>Reference Number Error</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <span>Sorry, reference number not found. Please try again</span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!displayNull && inquiry">
+        <div class="row">
+            <div class="col-12">
+                <h3>Tracking Delivery Status</h3>
+            </div>
+        </div>
+        
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-4">
+                <div class="mw-200">
+                    <div class=" d-flex align-items-center">
+                        <span class="fa fa-question mr-2 fa-2x" [ngClass]="getStatusClass(inquiry.status, DeliveryStatus.Pending)"></span>
+                        <div>
+                            <span>Pending</span><br>
+                            <small>December 10, 2023</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="mw-200">
+                    <div class="bg-secondary divider-status">&nbsp;</div>
+                </div>
+                <div class="mw-200">
+                    <div class=" d-flex align-items-center">
+                        <span class="fa fa-check mr-2 fa-2x" [ngClass]="getStatusClass(inquiry.status, DeliveryStatus.Received)"></span><span>Received</span>
+                    </div>
+                </div>
+                <div class="mw-200">
+                    <div class="bg-secondary divider-status">&nbsp;</div>
+                </div>
+                <div class="mw-200">
+                    <div class=" d-flex align-items-center">
+                        <span class="fa fa-calendar-o mr-2 fa-2x text-secondary"></span><span>For Load</span>
+                    </div>
+                </div>
+                <div class="mw-200">
+                    <div class="bg-secondary divider-status">&nbsp;</div>
+                </div>
+                <div class="mw-200">
+                    <div class=" d-flex align-items-center">
+                        <span class="fa fa-cubes mr-2 fa-2x text-secondary"></span><span>Loaded</span>
+                    </div>
+                </div>
+                <div class="mw-200">
+                    <div class="bg-secondary divider-status">&nbsp;</div>
+                </div>
+                <div class="mw-200">
+                    <div class=" d-flex align-items-center">
+                        <span class="fa fa-truck mr-2 fa-2x text-secondary"></span><span>In Transit</span>
+                    </div>
+                </div>
+                <div class=" mw-200">
+                    <div class="bg-secondary divider-status">&nbsp;</div>
+                </div>
+                <div class=" mw-200">
+                    <div class=" d-flex align-items-center">
+                        <span class="fa fa-check-circle mr-2 fa-2x text-secondary"></span><span>Delivered</span>
+                    </div>
+                </div>
+                <div class=" mw-200">
+                    <div class="bg-secondary divider-status">&nbsp;</div>
+                </div>
+                <div class=" mw-200">
+                    <div class=" d-flex align-items-center">
+                        <span class="fa fa-close mr-2 fa-2x text-danger"></span><span>Cancelled</span>
+                    </div>
+                </div>
+                <div class=" mw-200">
+                    <div class="bg-secondary divider-status">&nbsp;</div>
+                </div>
+                <div class=" mw-200">
+                    <div class=" d-flex align-items-center">
+                        <span class="fa fa-truck mr-2 fa-2x text-danger"></span><span>Failed Delivery</span>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>

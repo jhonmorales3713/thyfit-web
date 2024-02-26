@@ -12,13 +12,10 @@ import { LoginPage } from './admin/login/login.page';
 import { LogInService } from './admin/login/login.service';
 import { ModalService } from './shared/services/modal.service';
 import { AppNotificationService } from './shared/services/notification.service';
-import { FoodPage } from './admin/food/food.page';
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginPage,
-    FoodPage,
   ],
   imports: [
     CommonModule,

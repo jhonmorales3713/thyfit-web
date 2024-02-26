@@ -16,7 +16,6 @@ export class DashboardPage implements OnInit {
   }
   ngOnInit(): void {
     let dashboard = this.dashboardService.getCustomers().subscribe(data => {
-      console.log(data);
     });
   }
 }

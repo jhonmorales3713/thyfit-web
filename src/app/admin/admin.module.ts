@@ -13,16 +13,16 @@ import { DashboardService } from './dashboard/dashboard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from '../shared/api.service';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
-import { FoodPage } from './food/food.page';
-import { FoodComponent } from './food/components/food.component';
-import { FoodNewPage } from './food/food-new.page';
-import { FoodService } from './food/food.service';
 import { UiErrorComponent } from '../shared/ui-error/ui-error.component';
 import { LogInService } from './login/login.service';
 import { LoginPage } from './login/login.page';
 import { ModalService } from '../shared/services/modal.service';
 import { AppNotificationService } from '../shared/services/notification.service';
 import { NotificationComponent } from '../shared/notification/notification.component';
+import { InquiryPage } from './inquiry/inquiry.page';
+import { InquiryShowPage } from './inquiry/inquiry-show.page';
+import { VehicleShowPage } from './vehicle/vehicle-show.page';
+import { VehiclePage } from './vehicle/vehicle.page';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,10 @@ import { NotificationComponent } from '../shared/notification/notification.compo
     AdminTopnavComponent,
     DashboardPage,
     MainAdminPage,
-    FoodNewPage,
-    FoodComponent,
+    InquiryPage,
+    InquiryShowPage,
+    VehicleShowPage,
+    VehiclePage
   ],
   imports: [
     SharedModule,
@@ -44,7 +46,6 @@ import { NotificationComponent } from '../shared/notification/notification.compo
   ],
   providers: [
     DashboardService,
-    FoodService,
     ApiService,
     ModalService,
     AppNotificationService

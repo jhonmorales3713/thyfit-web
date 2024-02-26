@@ -1,0 +1,117 @@
+<div class="container mt-3 mb-3">
+    <div class="row">
+        <div class="col-12 text-center">
+            <div>
+                <h1>Moving your goods</h1>
+            </div>
+            <div class="color-main">
+                <h1>Easy and Fast</h1>
+            </div>
+            <div class="">
+                Efficient logistics, seamless solutions
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center">
+            <img src="assets/img/bg-.jpg" width="500px">
+        </div>
+    </div>
+    <inquiry-search></inquiry-search>
+    
+    <div class="row mt-3">
+        <div class="col">
+            <div class="d-flex align-items-center justify-content-center">
+                <h1>Our&nbsp;</h1>
+                <h1 class="color-main">Services</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-4 col-lg-3">
+            <div class="card">
+                <div class="card-body mh-100">
+                    <h5 class="card-title color-main"><span class="fa fa-truck mr-2"></span>Logistics</h5>
+                    <p class="card-text">Efficiently managing goods from production to delivery.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <div class="card">
+                <div class="card-body mh-100">
+                    <h5 class="card-title color-main"><span class="fa fa-truck mr-2"></span>Truck Rental</h5>
+                    <p class="card-text">Convenient, temporary access to reliable vehicles for moving and transportation needs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <div class="d-flex align-items-center justify-content-center">
+                <h1 class="color-main">Inquire&nbsp;</h1>
+                <h1>Now</h1>
+            </div>
+        </div>
+    </div>
+    <form (ngSubmit)="inquire()" (ngForm)="form">
+        <div class="row bg-main text-white">
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('email')}">
+                    <label class="form-label">E-mail</label>
+                    <input type="email" name="email" class="form-control form-control-sm" placeholder="Email"[(ngModel)]="form.email">
+                    <ui-error name="email" [form]="form" *ngIf="form.hasControlError('email')"></ui-error>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('contactNumber')}">
+                    <label class="form-label">Contact Number</label>
+                    <input type="text" name="contactNumber" class="form-control form-control-sm" placeholder="(+63)"[(ngModel)]="form.contactNumber">
+                </div>
+                <ui-error name="contactNumber" [form]="form" *ngIf="form.hasControlError('contactNumber')"></ui-error>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('cargoType')}">
+                    <label class="form-label">Cargo Type</label>
+                    <select class="form-control form-control-sm" name="cargoType" [(ngModel)]="form.cargoType">
+                        <option *ngFor="let item of cargoTypes" [value]="item.id">{{ item.name }}</option>
+                    </select>
+                    <ui-error name="cargoType" [form]="form" *ngIf="form.hasControlError('cargoType')"></ui-error>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('itemType')}">
+                    <label class="form-label">Item Type</label>
+                    <select class="form-control form-control-sm" name="itemType" [(ngModel)]="form.itemType">
+                        <option *ngFor="let item of itemTypes" [value]="item.id">{{ item.name }}</option>
+                    </select>
+                    <ui-error name="itemType" [form]="form" *ngIf="form.hasControlError('itemType')"></ui-error>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('quantity')}">
+                    <label class="form-label">Quantity</label>
+                    <input type="number" name="quantity" class="form-control form-control-sm" placeholder="Quantity"[(ngModel)]="form.quantity">
+                    <ui-error name="quantity" [form]="form" *ngIf="form.hasControlError('quantity')"></ui-error>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('targetDate')}">
+                    <label class="form-label">Target Date</label>
+                    <input type="date" name="targetDate" class="form-control form-control-sm" placeholder="Target Date" [(ngModel)]="form.targetDate">
+                    <ui-error name="targetDate" [form]="form" *ngIf="form.hasControlError('targetDate')"></ui-error>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('deliveryType')}">
+                    <label class="form-label">Delivery Type</label><br>
+                    <input type="radio" name="deliveryType" [value]="DeliveryType.PreLoad" [(ngModel)]="form.deliveryType"> Pre-Load
+                    <input type="radio" name="deliveryType" [value]="DeliveryType.Load" [(ngModel)]="form.deliveryType"> Loaded
+                    <ui-error name="deliveryType" [form]="form" *ngIf="form.hasControlError('deliveryType')"></ui-error>
+                </div>
+            </div>
+        </div>
+        <div class="row bg-main text-white">
+            <div class="col-md-2 offset-md-10 d-flex align-items-end justify-content-end mb-md-3 mb-3">
+                <button type="submit" class="btn btn-warning btn-sm w-100">Inquire</button>
+            </div>
+        </div>
+    </form>
+</div>

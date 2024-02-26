@@ -10,6 +10,9 @@ import { ModalComponent } from './modal/modal.component';
 import { ModalService } from './services/modal.service';
 import { NotificationComponent } from './notification/notification.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { InquirySearchComponent } from './inquiry-search/inquiry-search.component';
+import { TableHeaderArrowComponent } from './th-arrow/th-arrow.component';
+import { ErrorComponent } from '../error/error.component';
 
 @NgModule({
     imports: [
@@ -23,7 +26,10 @@ import { PaginationComponent } from './pagination/pagination.component';
         UiErrorComponent,
         ModalComponent,
         PaginationComponent,
+        InquirySearchComponent,
         NotificationComponent,
+        TableHeaderArrowComponent,
+        ErrorComponent,
     ],
     providers: [
         ModalService,
@@ -36,7 +42,10 @@ import { PaginationComponent } from './pagination/pagination.component';
         NgbModule,
         ModalComponent,
         PaginationComponent,
-        NotificationComponent
+        NotificationComponent,
+        InquirySearchComponent,
+        TableHeaderArrowComponent,
+        ErrorComponent,
     ],
 })
 export class SharedModule { }

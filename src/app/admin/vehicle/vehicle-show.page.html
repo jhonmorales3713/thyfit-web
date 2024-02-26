@@ -1,0 +1,92 @@
+<div *ngIf="hasError else content">
+    <error-component [errorCode]="T.Shared.StatusCodes.DocumentNotFound" [message]="T.Inquiry.Message.InquiryNotFound"></error-component>
+</div>
+<ng-template #content>
+    <div class="row" *ngIf="isLoading">
+        <div class="col-12">
+            <div class="loader">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="vehicle != null">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="nav-body d-flex">
+                    <h5 class="nav-title"><a href="admin/vehicles">Vehicle</a> > Plate # {{ vehicle.plateNumber }} <span class="field-value" [innerHTML]="VehicleStatus.format(vehicle.status)"></span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pr-3" *ngIf="vehicle.canUpdate">
+            <div class="col-lg-4 offset-lg-8 p-0">
+                <div class="navbar-collapse d-flex justify-content-end mt-2">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item drodpown profile-logo dropstart">
+                            <a class="nav-link dropdown-toggle btn btn-sm btn-secondary text-white p-1 pl-2" href="#" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Status
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-dark dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item cursor-pointer" *ngIf="vehicle.canUpdate" (click)="invalid()"><i class="fa fa-check mr-1"></i>Mark as For Maintennance</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Plate #</label><br>
+                <span class="field-value">{{vehicle.plateNumber}}</span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Year</label><br>
+                <span class="field-value">{{ vehicle.year }}</span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Color</label><br>
+                <span class="field-value">{{ vehicle.color }}</span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">VIN</label><br>
+                <span class="field-value">{{ vehicle.vin }}</span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Transmission</label><br>
+                <span class="field-value">{{ vehicle.transmission }}</span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Chassis #</label><br>
+                <span class="field-value">{{ vehicle.chassisNumber }}</span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Registry Expiration</label><br>
+                <span class="field-value">{{ vehicle.registryExpiration | date }}</span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Registry Date</label><br>
+                <span class="field-value">{{ vehicle.registryDate | date }}</span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Last Maintennance Date</label><br>
+                <span class="field-value">{{ vehicle.lastMaintennanceDate | date }}</span>
+            </div>
+        </div>
+    
+        <div class="row pr-3">
+            <div class="col-12 text-secondary">
+                <small><i>Created at {{ vehicle.createdAt | date }}</i></small>
+            </div>
+        </div>
+    </div>
+</ng-template>

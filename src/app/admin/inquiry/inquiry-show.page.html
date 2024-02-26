@@ -1,0 +1,79 @@
+<div *ngIf="hasError else content">
+    <error-component [errorCode]="T.Shared.StatusCodes.DocumentNotFound" [message]="T.Inquiry.Message.InquiryNotFound"></error-component>
+</div>
+<ng-template #content>
+    <div class="row" *ngIf="isLoading">
+        <div class="col-12">
+            <div class="loader">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="inquiry != null">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="nav-body d-flex">
+                    <h5 class="nav-title"><a href="admin/inquiries">Inquiry</a> > Ref # {{ inquiry.referenceNumber }} <span class="field-value" [innerHTML]="DeliveryStatus.format(inquiry.status)"></span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pr-3" *ngIf="inquiry.canUpdateStatus">
+            <div class="col-lg-4 offset-lg-8 p-0">
+                <div class="navbar-collapse d-flex justify-content-end mt-2">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item drodpown profile-logo dropstart">
+                            <a class="nav-link dropdown-toggle btn btn-sm btn-secondary text-white p-1 pl-2" href="#" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Status
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-dark dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item cursor-pointer" *ngIf="inquiry.canReceive" (click)="receive()"><i class="fa fa-check mr-1"></i>Mark as Received</a>
+                                <a class="dropdown-item cursor-pointer" *ngIf="inquiry.canInvalid" (click)="invalid()"><i class="fa fa-times-circle mr-1"></i>Mark as Invalid</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Email</label><br>
+                <span class="field-value">{{inquiry.email}}</span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Contact #</label><br>
+                <span class="field-value">{{ inquiry.contactNumber }}</span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Cargo Type</label><br>
+                <span class="field-value">{{ inquiry.cargoType.name }}</span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Item Type</label><br>
+                <span class="field-value">{{ inquiry.itemType.name }}</span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Quantity</label><br>
+                <span class="field-value">{{ inquiry.quantity }}</span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Target Date</label><br>
+                <span class="field-value">{{ inquiry.targetDate | date }}</span>
+            </div>
+        </div>
+    
+        <div class="row pr-3">
+            <div class="col-12 text-secondary">
+                <small><i>Created at {{ inquiry.createdAt | date }}</i></small>
+            </div>
+        </div>
+    </div>
+</ng-template>

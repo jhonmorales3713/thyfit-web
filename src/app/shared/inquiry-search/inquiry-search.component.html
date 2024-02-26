@@ -1,0 +1,14 @@
+
+<div class="row bg-main">
+    <div class="col-12 col-md-10">
+        <div class='input-group form-group mt-3 mb-3'>
+            <input type="text" class="form-control-sm form-control" placeholder="Search Reference Number" [(ngModel)]="searchBar">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="col col-md-2 d-flex align-items-center justify-content-around mb-md-0 mb-3">
+        <button type="button" class="btn btn-warning btn-sm w-100" (click)="search()">Search</button>
+    </div>
+</div>

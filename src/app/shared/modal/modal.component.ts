@@ -2,7 +2,6 @@ import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, C
 import { ModalService } from '../services/modal.service';
 import { ModalOptions } from './modal';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FoodComponent } from 'src/app/admin/food/components/food.component';
 import { NotificationService } from '../services/notification.service';
 
 @Component({
