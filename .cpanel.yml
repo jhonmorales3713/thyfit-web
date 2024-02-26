@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/jhonyuql/public_html/logitics.jhonmorales.com
+    - /bin/cp -R images $DEPLOYPATH
