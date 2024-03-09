@@ -7,7 +7,7 @@ import { DashboardPage } from './dashboard/dashboard.page';
 import { MainAdminPage } from './admin.page';
 import { AdminRouteModule } from './admin.route';
 import { SharedModule } from '../shared/shared.module';
-import { CommonModule } from '@angular/common';
+import { CommonModule, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { DashboardService } from './dashboard/dashboard.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,6 +23,19 @@ import { InquiryPage } from './inquiry/inquiry.page';
 import { InquiryShowPage } from './inquiry/inquiry-show.page';
 import { VehicleShowPage } from './vehicle/vehicle-show.page';
 import { VehiclePage } from './vehicle/vehicle.page';
+import { VehicleEditPage } from './vehicle/vehicle-edit.page';
+import { VehicleFormComponent } from './vehicle/components/form.component';
+import { VehicleNewPage } from './vehicle/vehicle-new.page';
+import { UserRolePage } from './settings/user-role/user-role.page';
+import { UserRoleShowPage } from './settings/user-role/user-role-show.page';
+import { UserRoleFormComponent } from './settings/user-role/components/form.component';
+import { UserRoleEditPage } from './settings/user-role/user-role-edit.page';
+import { UserRoleNewPage } from './settings/user-role/user-role-new.page';
+import { UserPage } from './settings/user/user.page';
+import { UserShowPage } from './settings/user/user-show.page';
+import { UserFormComponent } from './settings/user/components/form.component';
+import { UserEditPage } from './settings/user/user-edit.page';
+import { AccessDeniedPage } from './access-denied/access-denied.page';
 
 @NgModule({
   declarations: [
@@ -35,7 +48,20 @@ import { VehiclePage } from './vehicle/vehicle.page';
     InquiryPage,
     InquiryShowPage,
     VehicleShowPage,
-    VehiclePage
+    VehiclePage,
+    VehicleEditPage,
+    VehicleFormComponent,
+    VehicleNewPage,
+    UserRolePage,
+    UserRoleShowPage,
+    UserRoleFormComponent,
+    UserRoleEditPage,
+    UserRoleNewPage,
+    UserPage,
+    UserShowPage,
+    UserEditPage,
+    UserFormComponent,
+    AccessDeniedPage
   ],
   imports: [
     SharedModule,
@@ -48,7 +74,8 @@ import { VehiclePage } from './vehicle/vehicle.page';
     DashboardService,
     ApiService,
     ModalService,
-    AppNotificationService
+    AppNotificationService,
+    {provide: LocationStrategy, useClass: PathLocationStrategy}
   ],
 })
 export class AdminModule { }

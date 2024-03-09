@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AdminModule } from './admin/admin.module';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiService } from './shared/api.service';
 import { LoginPage } from './admin/login/login.page';
@@ -24,7 +24,7 @@ import { AppNotificationService } from './shared/services/notification.service';
     RouterModule,
     AppRoutingModule,
   ],
-  providers: [ApiService, LogInService, ModalService, AppNotificationService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [ApiService, LogInService, ModalService, AppNotificationService,{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent],
   exports: [
     CommonModule,

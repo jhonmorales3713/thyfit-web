@@ -1,0 +1,33 @@
+
+<div class="overflow-auto h-calc-95 hide-scrollbar">
+    <form (ngForm)="form" *ngIf="!isLoading" (ngSubmit)="submit()">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('name')}">
+                    <label class="form-label">Name</label>
+                    <div class="input-group">
+                        <input type="text" name="name" class="form-control form-control-sm" placeholder="Enter name" [(ngModel)]="form.name">   
+                    </div>
+                    <ui-error name="name" [form]="form" *ngIf="form.hasControlError('name')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-md-12" *ngFor="let role of Permissions">
+                <div class="form-group">
+                    <ui-error name="year" [form]="form" *ngIf="form.hasControlError('access')"></ui-error> 
+                    <label class="font-weight-bold field-label">{{ role.label }}</label><br>
+                    <div class="d-inline-block mr-1" *ngFor="let permission of role.permissions">
+                        <div class="form-check">
+                          <input type="checkbox" (change)="form.updatePermissions($event,role.tag+SharedPermissions[permission])" [id]="role.tag+SharedPermissions[permission]" class="form-check-input" [checked]="form.isChecked(role.tag+SharedPermissions[permission])">
+                          <label class="form-check-label" [for]="role.tag+SharedPermissions[permission]">{{ permission }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+                <button class="btn btn-sm btn-success" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

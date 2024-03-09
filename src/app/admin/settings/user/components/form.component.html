@@ -1,0 +1,51 @@
+
+<div class=" h-calc-95 hide-scrollbar">
+    <form (ngForm)="form" *ngIf="!isLoading" (ngSubmit)="submit()">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('name')}">
+                    <label class="form-label">Name</label>
+                    <div class="input-group">
+                        <input type="text" name="name" class="form-control form-control-sm" placeholder="Enter name" [(ngModel)]="form.name">   
+                    </div>
+                    <ui-error name="name" [form]="form" *ngIf="form.hasControlError('name')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('email')}">
+                    <label class="form-label">Email</label>
+                    <div class="input-group">
+                        <input type="email" name="email" class="form-control form-control-sm" placeholder="Enter email" [(ngModel)]="form.email">   
+                    </div>
+                    <ui-error name="email" [form]="form" *ngIf="form.hasControlError('email')"></ui-error> 
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('password')}">
+                    <label class="form-label">Password</label>
+                    <div class="input-group">
+                        <input type="password" name="password" class="form-control form-control-sm" placeholder="Enter password" [(ngModel)]="form.password">   
+                    </div>
+                    <ui-error name="password" [form]="form" *ngIf="form.hasControlError('password')"></ui-error> 
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Roles</label><br>
+                <input-select [searchService]="userRoleService" (ngModelChange)="selectedRole($event)"></input-select>
+                <h6 *ngFor="let permission of form.roles" class="mt-2">
+                    <span class="badge badge-success">{{permission.name}}<i class="fa fa-close ml-1 cursor-pointer" (click)="removePermission(permission)"></i></span>
+                </h6>
+                <ui-error name="userRoles" [form]="form" *ngIf="form.hasControlError('userRoles')"></ui-error> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+                <button class="btn btn-sm btn-success" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

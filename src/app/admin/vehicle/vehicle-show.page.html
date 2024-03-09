@@ -25,13 +25,16 @@
         <div class="row pr-3" *ngIf="vehicle.canUpdate">
             <div class="col-lg-4 offset-lg-8 p-0">
                 <div class="navbar-collapse d-flex justify-content-end mt-2">
+                    <a class="btn btn-white btn-sm mr-3" [href]="'admin/vehicles/'+vehicle.id+'/edit'"><i class="fa fa-pencil mr-2"></i>Edit</a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item drodpown profile-logo dropstart">
                             <a class="nav-link dropdown-toggle btn btn-sm btn-secondary text-white p-1 pl-2" href="#" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Status
                             </a>
                             <div class="dropdown-menu dropdown-menu-dark dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item cursor-pointer" *ngIf="vehicle.canUpdate" (click)="invalid()"><i class="fa fa-check mr-1"></i>Mark as For Maintennance</a>
+                                <a class="dropdown-item cursor-pointer" *ngIf="vehicle.canForMaintennance" (click)="setForMaintennance()"><i class="fa fa-info mr-1"></i>Set For Maintennance</a>
+                                <a class="dropdown-item cursor-pointer" *ngIf="vehicle.canOnMaintennance" (click)="setOnMaintennance()"><i class="fa fa-gear mr-1"></i>Set On Maintennance</a>
+                                <a class="dropdown-item cursor-pointer" *ngIf="vehicle.canActive" (click)="setActive()"><i class="fa fa-check mr-1"></i>Set to Active</a>
                             </div>
                         </li>
                     </ul>
@@ -39,47 +42,79 @@
             </div>
         </div>
         <div class="row pr-3">
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <label class="font-weight-bold field-label">Plate #</label><br>
                 <span class="field-value">{{vehicle.plateNumber}}</span>
             </div>
-            <div class="col-lg-4">
-                <label class="font-weight-bold field-label">Year</label><br>
-                <span class="field-value">{{ vehicle.year }}</span>
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Make</label><br>
+                <span class="field-value">{{vehicle.vehicleMake.name}}</span>
+            </div>
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Model</label><br>
+                <span class="field-value">{{ vehicle.vehicleModel.name }}</span>
             </div>
         </div>
         <div class="row pr-3">
-            <div class="col-lg-4">
-                <label class="font-weight-bold field-label">Color</label><br>
-                <span class="field-value">{{ vehicle.color }}</span>
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Gas Type</label><br>
+                <span class="field-value">{{vehicle.gasType.name}}</span>
             </div>
-            <div class="col-lg-4">
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Type</label><br>
+                <span class="field-value">{{ vehicle.type.name }}</span>
+            </div>
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Year</label><br>
+                <span class="field-value">{{ vehicle.year | formatNullable }}</span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Max Load (kg)</label><br>
+                <span class="field-value">{{vehicle.maxLoad | formatNullable}}</span>
+            </div>
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Price</label><br>
+                <span class="field-value">{{ vehicle.price | currency:' ':'symbol':'0.2-2' }}</span>
+            </div>
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Wheel Count</label><br>
+                <span class="field-value">{{ vehicle.wheelCount | formatNullable }}</span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Transmission</label><br>
+                <span class="field-value">{{ VehicleTransmissions.format(vehicle.transmission) }}</span>
+            </div>
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Color</label><br>
+                <span class="field-value">{{ vehicle.color | formatNullable }}</span>
+            </div>
+            <div class="col-md-4">
                 <label class="font-weight-bold field-label">VIN</label><br>
                 <span class="field-value">{{ vehicle.vin }}</span>
             </div>
         </div>
         <div class="row pr-3">
-            <div class="col-lg-4">
-                <label class="font-weight-bold field-label">Transmission</label><br>
-                <span class="field-value">{{ vehicle.transmission }}</span>
-            </div>
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <label class="font-weight-bold field-label">Chassis #</label><br>
                 <span class="field-value">{{ vehicle.chassisNumber }}</span>
             </div>
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Registry Expiration</label><br>
+                <span class="field-value">{{ vehicle.registryExpiration | date | formatNullable }}</span>
+            </div>
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Registry Date</label><br>
+                <span class="field-value">{{ vehicle.registryDate | date | formatNullable }}</span>
+            </div>
         </div>
         <div class="row pr-3">
-            <div class="col-lg-4">
-                <label class="font-weight-bold field-label">Registry Expiration</label><br>
-                <span class="field-value">{{ vehicle.registryExpiration | date }}</span>
-            </div>
-            <div class="col-lg-4">
-                <label class="font-weight-bold field-label">Registry Date</label><br>
-                <span class="field-value">{{ vehicle.registryDate | date }}</span>
-            </div>
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <label class="font-weight-bold field-label">Last Maintennance Date</label><br>
-                <span class="field-value">{{ vehicle.lastMaintennanceDate | date }}</span>
+                <span class="field-value">{{ vehicle.lastMaintennanceDate | date | formatNullable }}</span>
             </div>
         </div>
     

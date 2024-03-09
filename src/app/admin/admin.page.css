@@ -3,7 +3,7 @@ admin-header {
     width: 100%;
     top: 0px;
     height: 3rem;
-    z-index: 1;
+    z-index: 5 !important;
 }
 main {
     position: fixed;
@@ -57,4 +57,11 @@ admin-sidenav {
     max-width: calc(100% - 250px);
     padding-right: 15px;
     transition: all 250ms ease-out;
+}
+.hide-scollbar::-webkit-scrollbar {
+  width: 0;
+}
+
+.hide-scollbar {
+  scrollbar-width: none;
 }

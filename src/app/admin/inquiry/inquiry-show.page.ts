@@ -8,7 +8,9 @@ import { GenericPage } from 'src/app/shared/generic.page';
 import { InquiryService } from './inquiry.service';
 import { Inquiry } from './inquiry.model';
 import { HttpStatusCode } from '@angular/common/http';
-import { DeliveryStatus, DeliveryStatuses } from 'src/app/customer/inquiry/constant';
+import { DeliveryStatus, DeliveryStatuses, TAG } from 'src/app/customer/inquiry/constant';
+import { PermissionService } from 'src/app/shared/services/permission.service';
+import { SharedPermissions } from 'src/app/shared/constant';
 @Component({
   templateUrl: './inquiry-show.page.html',
 })
@@ -23,8 +25,9 @@ export class InquiryShowPage extends GenericPage implements OnInit{
       private activatedRoute: ActivatedRoute,
       private container: ViewContainerRef,
       private notification: AppNotificationService,
-      private inquiryService: InquiryService) {
-        super(route, activatedRoute, container, notification);
+      private inquiryService: InquiryService,
+      private permission: PermissionService) {
+        super(route, activatedRoute, container, notification, permission);
     }
     ngOnInit() {
       this.notification.setRootViewContainerRef(this.container);
@@ -57,12 +60,11 @@ export class InquiryShowPage extends GenericPage implements OnInit{
       this.inquiryService.receive(this.id).subscribe({
         next: (inquiry) => {
           this.inquiry = new Inquiry();
-          console.log(inquiry);
           this.inquiry.format(inquiry["data"]);
           this.isLoading = false;
-          console.log(this.inquiry);
           this.notification.success("Success","Inquiry Updated!");
         }, error: (inquiry) => {
+          console.log(inquiry);
           this.notification.error("Inquiry", inquiry.error.message);
         }
       });

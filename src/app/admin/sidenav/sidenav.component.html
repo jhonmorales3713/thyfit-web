@@ -2,13 +2,13 @@
     <div class="p-2">
         <ul class="list-unstyled components mb-5 menu-item" [ngClass]="{'hover' :sideNavVisible, 'shrink-border':!sideNavVisible}">
             <li>
-                <a href="#"><i class="fa fa-home"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Home</span></a>
+                <a href="admin/dashboard"><i class="fa fa-tachometer"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Dashboard</span></a>
             </li>
             <li class="active"(click)="subMenu($event)">
                 <a href="#salesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle initial"  [ngClass]="sideNavVisible ? 'expanded ': 'shrinked'">
                 <i class="fa fa-question-circle-o"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">{{ T.Sidenav.Label.Sales }}</span></a>
-                <ul class="list-unstyled collapse sub-menu" id="salesSubmenu">
-                    <li>
+                <ul class="list-unstyled collapse sub-menu" id="salesSubmenu" *ngIf="hasPermission(PermissionTags.InquiryTag)">
+                    <li *ngIf="hasPermission(PermissionTags.InquiryTag+SharedPermission.View)">
                         <a href="admin/inquiries" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
                             <i class="fa fa-question"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Inquiries</span>
                         </a>
@@ -35,7 +35,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
+                            <a href="admin/vehicles" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
                                 <i class="fa fa-car"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Vehicle</span>
                             </a>
                         </li>
@@ -46,17 +46,17 @@
                         </li>
                     </ul>
                 </li>
-                <li class="active"(click)="subMenu($event)">
+                <li class="active"(click)="subMenu($event)" *ngIf="isAdmin()">
                     <a href="#settingsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle initial"  [ngClass]="sideNavVisible ? 'expanded ': 'shrinked'">
                     <i class="fa fa-lock"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">{{ T.Sidenav.Label.Settings }}</span></a>
                     <ul class="list-unstyled collapse sub-menu" id="settingsSubmenu">
                         <li>
-                            <a href="#" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
+                            <a href="admin/users" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
                                 <i class="fa fa-user-o"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">User</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
+                            <a href="admin/user-roles" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
                                 <i class="fa fa-cogs"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">User Permissions</span>
                             </a>
                         </li>

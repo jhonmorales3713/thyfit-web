@@ -19,6 +19,7 @@ import { GasType } from '../gas-type/gas-type.listing.model';
 import { VehicleMakeService } from '../vehicle-make/vehicle-make.service';
 import { VehicleModelService } from '../vehicle-model/vehicle-model.service';
 import { GasTypeService } from '../gas-type/gas-type.service';
+import { PermissionService } from 'src/app/shared/services/permission.service';
 
 @Component({
   templateUrl: './vehicle.page.html'
@@ -50,13 +51,14 @@ export class VehiclePage extends GenericPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private container: ViewContainerRef,
     private notification: AppNotificationService,
+    private permission: PermissionService,
     private vehicleService: VehicleService,
     private vehicleMakeService: VehicleMakeService,
     private vehicleModelService: VehicleModelService,
     private gasTypeService: GasTypeService,
     private typeService: CargoTypeService,
   ){
-    super(route,activatedRoute, container, notification);
+    super(route,activatedRoute, container, notification, permission);
   }
   ngOnInit() {
     this.notification.setRootViewContainerRef(this.container);

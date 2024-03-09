@@ -1,8 +1,16 @@
+import { SharedPermissions } from "src/app/shared/constant";
 
+export const TAG = 'vehic';
+export const TAG_DESCRIPTION = 'Vehicle';
 export enum VehicleStatus {
     Active = 'activ',
     OnMaintennance = 'onMai',
     ForMaintennance = 'forMa',
+}
+export const VehiclePermissions = {
+    "label" : TAG_DESCRIPTION,
+    "tag" : TAG,
+    "permissions" : ["View","Modify"]
 }
 export enum VehicleTransmission {
     Manual = 'manua',

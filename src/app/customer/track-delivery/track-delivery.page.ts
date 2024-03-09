@@ -4,6 +4,7 @@ import { CargoTypeService } from 'src/app/admin/cargo-type/cargo-type.service';
 import { InquiryService } from 'src/app/admin/inquiry/inquiry.service';
 import { AppNotificationService } from 'src/app/shared/services/notification.service';
 import { DeliveryStatus } from '../inquiry/constant';
+import { Inquiry } from 'src/app/admin/inquiry/inquiry.model';
 
 @Component({
   selector: 'app-track-delivery',
@@ -14,7 +15,7 @@ export class TrackDeliveryPage {
   DeliveryStatus = DeliveryStatus;
   displayNull = false;
   displayAll = false;
-  inquiry: any;
+  inquiry: Inquiry = new Inquiry();
   constructor(
     private container: ViewContainerRef,
     private notification: AppNotificationService,
@@ -32,7 +33,7 @@ export class TrackDeliveryPage {
   loadPage() {
     this.inquiryService.showByRefNum(this.referenceNumber).subscribe(data => {
       this.displayNull = !data;
-      this.inquiry = data;
+      this.inquiry.format(data["data"]);
       // console.log(this.getStatusClass(this.inquiry.status));
     });
     this.displayAll = true;
@@ -49,5 +50,18 @@ export class TrackDeliveryPage {
         'failed' : ['faile','deliv','intra','load','forlo', 'recei', 'pendi'],
       };
       return statuses[status].includes(deliveryStatus) ? 'text-success' : 'text-secondary';
+  }
+  displayDate(status: string, deliveryStatus: string) {
+      let statuses = {
+        'pendi' : ['pendi'],
+        'recei' : ['recei', 'pendi'],
+        'forLoad' : ['forlo', 'recei', 'pendi'],
+        'loaded' : ['load','forlo', 'recei', 'pendi'],
+        'inTransit' : ['intra','load','forlo', 'recei', 'pendi'],
+        'delivered' : ['deliv','intra','load','forlo', 'recei', 'pendi'],
+        'cancelled' : ['recei', 'pendi'],
+        'failed' : ['faile','deliv','intra','load','forlo', 'recei', 'pendi'],
+      };
+      return statuses[status].includes(deliveryStatus);
   }
 }

@@ -6,19 +6,27 @@ import { ApiService } from 'src/app/shared/api.service';
 })
 export class VehicleService extends ApiService {
   create (payload : any) {
-    let request = this.postRequest('inquiry/', payload);
+    let request = this.postRequest('vehicle/', payload);
+    return request;
+  }
+  update (id: number ,payload : any) {
+    let request = this.putRequest('vehicle/update/'+id, payload);
     return request;
   }
   show (id:number) {
-    let request = this.getRequest('inquiry/show/' + id);
+    let request = this.getRequest('vehicle/show/' + id);
     return request;
   }
-  receive (id:number) {
-    let request = this.getRequest('inquiry/receive/' + id);
+  setForMaintennance (id:number) {
+    let request = this.getRequest('vehicle/setForMaintennance/' + id);
     return request;
   }
-  invalid (id:number) {
-    let request = this.getRequest('inquiry/invalid/' + id);
+  setOnMaintennance (id:number) {
+    let request = this.getRequest('vehicle/setOnMaintennance/' + id);
+    return request;
+  }
+  setActive (id:number) {
+    let request = this.getRequest('vehicle/setActive/' + id);
     return request;
   }
   showByRefNum (refNum : string) {

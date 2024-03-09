@@ -13,7 +13,7 @@ export class AuthenticationService extends ApiService {
   }
 
   setIsAuthenticated (authenticationData: any) {
-    localStorage.setItem('token', authenticationData);
+    localStorage.setItem('token', JSON.stringify(authenticationData));
   }
 
   isLoggedIn(){

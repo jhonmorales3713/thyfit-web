@@ -9,13 +9,14 @@ export class ApiService {
     
     private headers = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${environment.apiKey}`
+        'Authorization': `Bearer ${localStorage["token"] ? JSON.parse(localStorage["token"])?.access_token : ''}`
     });
     private params = new HttpParams();
     public queryParams = '';
     constructor(
         private httpClient: HttpClient, 
     ) {
+        console.log(localStorage)
     }
     setParameters(parameters = []): ApiService {
         this.queryParams = '';

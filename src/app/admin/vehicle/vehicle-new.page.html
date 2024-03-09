@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="nav-body d-flex">
+            <h5 class="nav-title"><a href="admin/vehicles">Vehicle</a> > New</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<vehicle-form [form]="vehicle" (submitForm)="submit($event)" [isUpdate] = "false"></vehicle-form>

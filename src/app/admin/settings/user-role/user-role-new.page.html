@@ -1,0 +1,23 @@
+
+<div class="row" *ngIf="isLoading">
+    <div class="col-12">
+        <div class="loader">
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="nav-body d-flex">
+                <h5 class="nav-title"><a href="admin/user-roles">User Role</a> > New</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <user-role-form [form]="userRole" (submitForm)="submit($event)" [isUpdate]="false" ></user-role-form>
+</div>

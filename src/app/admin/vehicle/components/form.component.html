@@ -1,0 +1,180 @@
+
+<div class="overflow-auto h-calc-95 hide-scrollbar">
+    <div class="row" *ngIf="isLoading">
+        <div class="col-12">
+            <div class="loader">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form (ngForm)="form" *ngIf="!isLoading" (ngSubmit)="submit()">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('plateNumber')}">
+                    <label class="form-label">Plate #</label>
+                    <div class="input-group">
+                        <input type="text" name="plate" class="form-control form-control-sm" placeholder="Enter plate #" [(ngModel)]="form.plateNumber">   
+                    </div>
+                    <ui-error name="plateNumber" [form]="form" *ngIf="form.hasControlError('plateNumber')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('vehicleMake')}">
+                    <label class="form-label">Make</label>
+                    <select class="form-control form-control-sm" name="vehicleMake" [(ngModel)]="form.vehicleMake.id">
+                        <option *ngFor="let item of vehicleMakes" [value]="item.id">{{ item.name }}</option>
+                    </select>
+                    <ui-error name="vehicleMake" [form]="form" *ngIf="form.hasControlError('vehicleMake')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('vehicleModel')}">
+                    <label class="form-label">Model</label>
+                    <select class="form-control form-control-sm" name="vehicleModel" [(ngModel)]="form.vehicleModel.id">
+                        <option *ngFor="let item of vehicleModels" [value]="item.id">{{ item.name }}</option>
+                    </select>
+                    <ui-error name="vehicleModel" [form]="form" *ngIf="form.hasControlError('vehicleModel')"></ui-error> 
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('gasType')}">
+                    <label class="form-label">Gas Type</label>
+                    <select class="form-control form-control-sm" name="gasType" [(ngModel)]="form.gasType.id">
+                        <option *ngFor="let item of gasTypes" [value]="item.id">{{ item.name }}</option>
+                    </select>
+                    <ui-error name="gasType" [form]="form" *ngIf="form.hasControlError('gasType')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('type')}">
+                    <label class="form-label">Type</label>
+                    <select class="form-control form-control-sm" name="type" [(ngModel)]="form.type.id">
+                        <option *ngFor="let item of types" [value]="item.id">{{ item.name }}</option>
+                    </select>
+                    <ui-error name="type" [form]="form" *ngIf="form.hasControlError('type')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('year')}">
+                    <label class="form-label">Year</label>
+                    <div class="input-group">
+                        <input type="number" name="year" class="form-control form-control-sm" placeholder="Enter year" [(ngModel)]="form.year">   
+                    </div>
+                    <ui-error name="year" [form]="form" *ngIf="form.hasControlError('year')"></ui-error> 
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('maxLoad')}">
+                    <label class="form-label">Max Load (kg)</label>
+                    <div class="input-group">
+                        <input type="number" name="maxLoad" class="form-control form-control-sm" placeholder="Enter max load" [(ngModel)]="form.maxLoad">   
+                    </div>
+                    <ui-error name="maxLoad" [form]="form" *ngIf="form.hasControlError('maxLoad')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('price')}">
+                    <label class="form-label">Price</label>
+                    <div class="input-group">
+                        <input type="number" name="price" class="form-control form-control-sm" placeholder="Enter price" [(ngModel)]="form.price">   
+                    </div>
+                    <ui-error name="price" [form]="form" *ngIf="form.hasControlError('price')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('wheelCount')}">
+                    <label class="form-label">Wheel Count</label>
+                    <div class="input-group">
+                        <input type="number" name="wheelCount" class="form-control form-control-sm" placeholder="Enter wheel count" [(ngModel)]="form.wheelCount">   
+                    </div>
+                    <ui-error name="wheelCount" [form]="form" *ngIf="form.hasControlError('wheelCount')"></ui-error> 
+                </div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('transmission')}">
+                    <label class="form-label">Transmission</label>
+                    <select class="form-control form-control-sm" name="transmission" [(ngModel)]="form.transmission">
+                        <option [value]=""></option>
+                        <option [value]="VehicleTransmission.Manual">{{ VehicleTransmissions.format(VehicleTransmission.Manual) }}</option>
+                        <option [value]="VehicleTransmission.Automatic">{{ VehicleTransmissions.format(VehicleTransmission.Automatic) }}</option>
+                    </select>
+                    <ui-error name="transmission" [form]="form" *ngIf="form.hasControlError('transmission')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('color')}">
+                    <label class="form-label">Color</label>
+                    <div class="input-group">
+                        <input type="text" name="color" class="form-control form-control-sm" placeholder="Enter color" [(ngModel)]="form.color">   
+                    </div>
+                    <ui-error name="color" [form]="form" *ngIf="form.hasControlError('color')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('vin')}">
+                    <label class="form-label">VIN</label>
+                    <div class="input-group">
+                        <input type="text" name="vin" class="form-control form-control-sm" placeholder="Enter vin" [(ngModel)]="form.vin">   
+                    </div>
+                    <ui-error name="vin" [form]="form" *ngIf="form.hasControlError('vin')"></ui-error> 
+                </div>
+            </div>
+        </div>   
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('chassisNumber')}">
+                    <label class="form-label">Chassis #</label>
+                    <div class="input-group">
+                        <input type="text" name="chassisNumber" class="form-control form-control-sm" placeholder="Enter chassis #" [(ngModel)]="form.chassisNumber">   
+                    </div>
+                    <ui-error name="chassisNumber" [form]="form" *ngIf="form.hasControlError('chassisNumber')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('mileAge')}">
+                    <label class="form-label">Mileage</label>
+                    <div class="input-group">
+                        <input type="text" name="mileAge" class="form-control form-control-sm" placeholder="Enter mileage" [(ngModel)]="form.mileAge">   
+                    </div>
+                    <ui-error name="mileAge" [form]="form" *ngIf="form.hasControlError('mileAge')"></ui-error> 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('registryExpiration')}">
+                    <label class="form-label">Registry Expiration</label>
+                    <input type="date" name="registryExpiration" class="form-control form-control-sm" placeholder="Registry Expiration" [(ngModel)]="form.registryExpiration" value="2002-02-02">
+                </div>
+                <ui-error name="registryExpiration" [form]="form" *ngIf="form.hasControlError('registryExpiration')"></ui-error> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('registryDate')}">
+                    <label class="form-label">Registry Date</label>
+                    <input type="date" name="registryDate" class="form-control form-control-sm" placeholder="Registry Date" [(ngModel)]="form.registryDate">
+                </div>
+                <ui-error name="registryDate" [form]="form" *ngIf="form.hasControlError('registryDate')"></ui-error> 
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('lastMaintennanceDate')}">
+                    <label class="form-label">Last Maintennance Date</label>
+                    <input type="date" name="lastMaintennanceDate" class="form-control form-control-sm" placeholder="Last Maintennance Date" [(ngModel)]="form.lastMaintennanceDate">
+                </div>
+                <ui-error name="lastMaintennanceDate" [form]="form" *ngIf="form.hasControlError('lastMaintennanceDate')"></ui-error> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+                <button class="btn btn-sm btn-success" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

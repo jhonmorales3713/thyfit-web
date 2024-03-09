@@ -1,0 +1,27 @@
+<div *ngIf="hasError else content">
+    <error-component [errorCode]="T.Shared.StatusCodes.DocumentNotFound" [message]="T.Inquiry.Message.InquiryNotFound"></error-component>
+</div>
+<ng-template #content>
+    <div class="row" *ngIf="isLoading">
+        <div class="col-12">
+            <div class="loader">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="vehicle != null">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="nav-body d-flex">
+                    <h5 class="nav-title"><a href="admin/vehicles">Vehicle</a> > <a [href]="'admin/vehicles/'+vehicle.id" >Plate # {{ vehicle.plateNumber }} </a><span class="field-value" [innerHTML]="VehicleStatus.format(vehicle.status)"></span> > Edit</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <vehicle-form [form]="vehicle" (submitForm)="submit($event)" ></vehicle-form>
+    </div>
+</ng-template>

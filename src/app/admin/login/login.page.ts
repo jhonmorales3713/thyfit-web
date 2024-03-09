@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.notificationService.setRootViewContainerRef(this.viewContainerRef);  
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(["/admin/home"]);
+      this.router.navigate(["/admin/dashboard"]);
     }
   }
   logIn() {
@@ -32,11 +32,11 @@ export class LoginPage implements OnInit {
         next: (data) => {
           this.notificationService.success("Success","Welcome!");
           this.authService.setIsAuthenticated(data);
-          this.router.navigate(["/admin/home"]);
+          this.router.navigate(["/admin/dashboard"]);
 
         },error: (failedRequest) => {
           FormUtils.setErrors(failedRequest.error.errors,this.form)
-          this.notificationService.error("Error","Please check the errors.");
+          this.notificationService.error("Error","Invalid username/password");
         }
       }
     )

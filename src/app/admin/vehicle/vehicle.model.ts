@@ -5,8 +5,9 @@ import { VehicleMake } from "../vehicle-make/vehicle-make.listing.model";
 import { VehicleModel } from "../vehicle-model/vehicle-model.listing.model";
 import { GasType } from "../gas-type/gas-type.listing.model";
 import { VehicleStatus } from "./constant";
+import { FormUtils } from "src/app/shared/form-utils";
 
-export class Vehicle {
+export class Vehicle extends FormUtils{
     id : number;
     plateNumber: string;
     year: number;
@@ -28,10 +29,11 @@ export class Vehicle {
     registryExpiration: Date;
     lastMaintennanceDate: Date;
     createdAt: Date;
-
-    canUpdate: boolean;
-    constructor() {
-      
+    canOnMaintennance: boolean;
+    canForMaintennance: boolean;
+    canActive: boolean;
+    get canUpdate() {
+      return this.canActive || this.canForMaintennance || this.canOnMaintennance;
     }
     public format(data: any) {
       this.id = data.id;
@@ -53,5 +55,9 @@ export class Vehicle {
       this.registryExpiration = data.registryExpiration;
       this.lastMaintennanceDate = data.lastMaintennanceDate;
       this.status = data.status;
+      this.createdAt = data.createdAt;
+      this.canActive = data.canActive;
+      this.canForMaintennance = data.canForMaintennance;
+      this.canOnMaintennance = data.canOnMaintennance;
     }
 }

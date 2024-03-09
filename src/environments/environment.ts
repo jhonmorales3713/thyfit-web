@@ -1,5 +1,6 @@
 export const environment = {
     production: false,
-    apiKey: '1|S8uPrgD8gfa3VpF13vrcHCGHJ7OTupOcM9OXe7QQ088220df',
-    apiUrl: 'http://localhost:8000/api/v1/'
+    apiKey: '1|8oijIabCjaEQOnohXjpOAHgoOUMBRQZ50ZfOu8Bn22b141fc',
+    apiUrl: 'http://localhost:8000/api/v1/',
+    unguardedUrl: 'http://localhost:8000/api/'
 };

@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiErrorComponent } from './ui-error/ui-error.component';
 import { NgbModule, NgbToast } from '@ng-bootstrap/ng-bootstrap';
 import { AppNotificationService } from './services/notification.service';
@@ -13,6 +13,10 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { InquirySearchComponent } from './inquiry-search/inquiry-search.component';
 import { TableHeaderArrowComponent } from './th-arrow/th-arrow.component';
 import { ErrorComponent } from '../error/error.component';
+import { NumberInputComponent } from './ui-number-input/ui-number-input';
+import { WholeNumberPipe } from './pipes/whole-number.pipe';
+import { FormatNullablePipe } from './pipes/format-nullable.pipe';
+import { InputSelectComponent } from './input-select/input-select.component';
 
 @NgModule({
     imports: [
@@ -21,6 +25,7 @@ import { ErrorComponent } from '../error/error.component';
         FormsModule,
         CommonModule,
         NgbModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         UiErrorComponent,
@@ -30,6 +35,10 @@ import { ErrorComponent } from '../error/error.component';
         NotificationComponent,
         TableHeaderArrowComponent,
         ErrorComponent,
+        NumberInputComponent,
+        WholeNumberPipe,
+        InputSelectComponent,
+        FormatNullablePipe,
     ],
     providers: [
         ModalService,
@@ -45,7 +54,11 @@ import { ErrorComponent } from '../error/error.component';
         NotificationComponent,
         InquirySearchComponent,
         TableHeaderArrowComponent,
+        NumberInputComponent,
+        WholeNumberPipe,
+        FormatNullablePipe,
         ErrorComponent,
+        InputSelectComponent,
     ],
 })
 export class SharedModule { }

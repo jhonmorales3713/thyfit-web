@@ -14,6 +14,7 @@ export class Inquiry {
     targetDate: Date;
     deliveryType: DeliveryType;
     createdAt: Date;
+    receivedAt: Date;
     canReceive: boolean;
     canInvalid: boolean;
     constructor() {
@@ -32,6 +33,7 @@ export class Inquiry {
       this.quantity = data.quantity;
       this.deliveryType = data.deliveryType;
       this.targetDate = data.targetDate;
+      this.receivedAt = data.receivedAt;
       this.createdAt = data.createdAt;
       this.canInvalid = data.canInvalid;
       this.canReceive = data.canReceive;

@@ -14,6 +14,7 @@ import { ItemType } from '../item-type/item-type.listing.model';
 import { CargoType } from '../cargo-type/cargo-type.listing.model';
 import { DeliveryStatus, DeliveryStatuses, DeliveryType, DeliveryTypes } from 'src/app/customer/inquiry/constant';
 import { GenericPage } from 'src/app/shared/generic.page';
+import { PermissionService } from 'src/app/shared/services/permission.service';
 
 @Component({
   templateUrl: './inquiry.page.html'
@@ -45,8 +46,9 @@ export class InquiryPage extends GenericPage implements OnInit {
     private inquiryService: InquiryService,
     private itemTypeService: ItemTypeService,
     private cargoTypeService: CargoTypeService,
+    private permission: PermissionService
   ){
-    super(route,activatedRoute, container, notification);
+    super(route,activatedRoute, container, notification, permission);
   }
   ngOnInit() {
     this.notification.setRootViewContainerRef(this.container);

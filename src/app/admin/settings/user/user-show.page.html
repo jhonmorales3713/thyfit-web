@@ -1,0 +1,75 @@
+<div *ngIf="hasError else content">
+    <error-component [errorCode]="T.Shared.StatusCodes.DocumentNotFound" [message]="T.User.Message.UserNotFound"></error-component>
+</div>
+<ng-template #content>
+    <div class="row" *ngIf="isLoading">
+        <div class="col-12">
+            <div class="loader">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="user != null">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="nav-body d-flex">
+                    <h5 class="nav-title"><a href="admin/users">User </a> > {{ user.name }} <span class="field-value" [innerHTML]="UserStatuses.format(user.status)"></span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pr-3" *ngIf="user.canUpdate">
+            <div class="col-lg-4 offset-lg-8 p-0">
+                <div class="navbar-collapse d-flex justify-content-end mt-2">
+                    <a class="btn btn-white btn-sm mr-3" *ngIf="user.status === UserStatus.Active" [href]="'admin/users/'+user.id+'/edit'"><i class="fa fa-pencil mr-2"></i>Edit</a>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item drodpown profile-logo dropstart">
+                            <a class="nav-link dropdown-toggle btn btn-sm btn-secondary text-white p-1 pl-2" href="#" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Status
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-dark dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item cursor-pointer" *ngIf="user.canActive" (click)="setActive()"><i class="fa fa-check mr-1"></i>Set to Active</a>
+                                <a class="dropdown-item cursor-pointer" *ngIf="user.canInactive" (click)="setInactive()"><i class="fa fa-check mr-1"></i>Set to Inactive</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row pr-3">
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Name</label><br>
+                <span class="field-value">{{user.name}}</span>
+            </div>
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Email</label><br>
+                <span class="field-value">{{user.email}}</span>
+            </div>
+        </div>
+    
+        <div class="row pr-3">
+            <div class="col-md-4">
+                <label class="font-weight-bold field-label">Roles</label><br>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr *ngFor="let permission of user.roles">
+                            <td>
+                                <a [href]="'admin/user-roles/'+permission.id">{{ permission.name }}</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-12 text-secondary">
+                <small><i>Created at {{ user.createdAt | date }}</i></small>
+            </div>
+        </div>
+    </div>
+</ng-template>

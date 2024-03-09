@@ -1,4 +1,5 @@
-
+export const TAG = 'inqui';
+export const TAG_DESCRIPTION = 'Inquiry';
 export class DeliveryType {
     static DeliveryType = {
         'prelo' : 'Pre-Load',
@@ -7,6 +8,11 @@ export class DeliveryType {
     public static format(delivery) {
         return DeliveryType.DeliveryType[delivery];
     }
+}
+export const InquiryPermissions = {
+    "label" : TAG_DESCRIPTION,
+    "tag" : TAG,
+    "permissions" : ["View","Modify", "Receive", "Invalid"] 
 }
 export enum DeliveryTypes {
     PreLoad = 'prelo',

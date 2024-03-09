@@ -1,0 +1,60 @@
+<div *ngIf="hasError else content">
+    <error-component [errorCode]="T.Shared.StatusCodes.DocumentNotFound" [message]="T.UserRole.Message.UserRoleNotFound"></error-component>
+</div>
+<ng-template #content>
+    <div class="row" *ngIf="isLoading">
+        <div class="col-12">
+            <div class="loader">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="userRole != null">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="nav-body d-flex">
+                    <h5 class="nav-title"><a href="admin/user-roles">User Role</a> > {{ userRole.name }} <span class="field-value" [innerHTML]="UserRoleStatus.format(userRole.status)"></span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pr-3" *ngIf="userRole.canUpdate">
+            <div class="col-lg-4 offset-lg-8 p-0">
+                <div class="navbar-collapse d-flex justify-content-end mt-2">
+                    <a class="btn btn-white btn-sm mr-3" *ngIf="userRole.status === UserRoleStat.Active" [href]="'admin/user-roles/'+userRole.id+'/edit'"><i class="fa fa-pencil mr-2"></i>Edit</a>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item drodpown profile-logo dropstart">
+                            <a class="nav-link dropdown-toggle btn btn-sm btn-secondary text-white p-1 pl-2" href="#" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Status
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-dark dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item cursor-pointer" *ngIf="userRole.canActive" (click)="setActive()"><i class="fa fa-check mr-1"></i>Set to Active</a>
+                                <a class="dropdown-item cursor-pointer" *ngIf="userRole.canInactive" (click)="setInactive()"><i class="fa fa-check mr-1"></i>Set to Inactive</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-md-12" *ngFor="let role of Permissions">
+                <div class="form-group">
+                    <label class="font-weight-bold field-label">{{ role.label }}</label><br>
+                    <div class="d-inline-block mr-2" *ngFor="let permission of role.permissions">
+                        <i class="fa" [ngClass]="userRole.isChecked(role.tag+SharedPermissions[permission]) ? 'fa-check-square' : 'fa-square-o'"></i> {{ permission }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row pr-3">
+            <div class="col-12 text-secondary">
+                <small><i>Created at {{ userRole.createdAt | date }}</i></small>
+            </div>
+        </div>
+    </div>
+</ng-template>
