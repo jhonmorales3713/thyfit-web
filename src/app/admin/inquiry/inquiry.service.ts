@@ -6,7 +6,7 @@ import { ApiService } from 'src/app/shared/api.service';
 })
 export class InquiryService extends ApiService {
   create (payload : any) {
-    let request = this.postRequest('inquiry/', payload);
+    let request = this.postRequest('inquiry/inquire', payload);
     return request;
   }
   show (id:number) {
