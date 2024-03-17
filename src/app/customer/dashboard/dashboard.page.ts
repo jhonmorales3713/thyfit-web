@@ -4,11 +4,11 @@ import { ItemType } from 'src/app/admin/item-type/item-type.listing.model';
 import { ItemTypeService } from 'src/app/admin/item-type/item-type.service';
 import { AppNotificationService } from 'src/app/shared/services/notification.service';
 import { LoginForm } from 'src/app/admin/login/login.form';
-import { InquiryForm } from '../inquiry/inquiry.form';
+import { InquiryForm } from '../../admin/warehouse/inquiry/inquiry.form';
 import { CargoType } from 'src/app/admin/cargo-type/cargo-type.listing.model';
 import { CargoTypeService } from 'src/app/admin/cargo-type/cargo-type.service';
-import { InquiryService } from 'src/app/admin/inquiry/inquiry.service';
-import { DeliveryType, DeliveryTypes } from '../inquiry/constant';
+import { InquiryService } from 'src/app/admin/warehouse/inquiry/inquiry.service';
+import { DeliveryType, DeliveryTypes } from '../../admin/warehouse/inquiry/constant';
 import { FormUtils } from 'src/app/shared/form-utils';
 
 @Component({
@@ -55,7 +55,6 @@ export class DashboardPage implements OnInit{
         
       }, error: (failedRequest) => {
         FormUtils.setErrors(failedRequest.error.errors, this.form);
-        console.log(this.form);
         this.notification.error("Error","Saving Failed");
       }
     });

@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormUtils } from 'src/app/shared/form-utils';
 import { AppNotificationService } from 'src/app/shared/services/notification.service';
 import { GenericPage } from 'src/app/shared/generic.page';
-import { DeliveryStatus, DeliveryStatuses } from 'src/app/customer/inquiry/constant';
+import { DeliveryStatus, DeliveryStatuses } from 'src/app/admin/warehouse/inquiry/constant';
 import { HttpStatusCode } from '@angular/common/http';
 import { UserRoleForm } from './user-role.form';
 import { UserRoleService } from './user-role.service';

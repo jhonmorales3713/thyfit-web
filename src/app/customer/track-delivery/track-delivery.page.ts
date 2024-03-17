@@ -1,10 +1,10 @@
 import { Component, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CargoTypeService } from 'src/app/admin/cargo-type/cargo-type.service';
-import { InquiryService } from 'src/app/admin/inquiry/inquiry.service';
+import { InquiryService } from 'src/app/admin/warehouse/inquiry/inquiry.service';
 import { AppNotificationService } from 'src/app/shared/services/notification.service';
-import { DeliveryStatus } from '../inquiry/constant';
-import { Inquiry } from 'src/app/admin/inquiry/inquiry.model';
+import { DeliveryStatus } from '../../admin/warehouse/inquiry/constant';
+import { Inquiry } from 'src/app/admin/warehouse/inquiry/inquiry.model';
 
 @Component({
   selector: 'app-track-delivery',

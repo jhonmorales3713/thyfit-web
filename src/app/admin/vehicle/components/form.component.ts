@@ -6,7 +6,7 @@ import { FormUtils } from 'src/app/shared/form-utils';
 import { AppNotificationService } from 'src/app/shared/services/notification.service';
 import { GenericPage } from 'src/app/shared/generic.page';
 import { HttpStatusCode } from '@angular/common/http';
-import { DeliveryStatus, DeliveryStatuses } from 'src/app/customer/inquiry/constant';
+import { DeliveryStatus, DeliveryStatuses } from 'src/app/admin/warehouse/inquiry/constant';
 import { Vehicle } from '../vehicle.model';
 import { VehicleStatuses, VehicleTransmission, VehicleTransmissions } from '../constant';
 import { VehicleService } from '../vehicle.service';

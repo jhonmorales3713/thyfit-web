@@ -29,15 +29,11 @@ export class VehicleService extends ApiService {
     let request = this.getRequest('vehicle/setActive/' + id);
     return request;
   }
-  showByRefNum (refNum : string) {
-    let request = this.getRequest('inquiry/showByRefNum/' + refNum);
-    return request;
-  }
   dropdown(options: any = null) {  
     if (options) {
       this.setParameters(options);
     }
-    let request = this.getRequest('itemtype/dropdown');
+    let request = this.getRequest('vehicle/dropdown?'+this.queryParams);
     return request;
   }
   vehicles (options: any) {

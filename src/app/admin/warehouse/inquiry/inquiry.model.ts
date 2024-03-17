@@ -1,6 +1,6 @@
-import { DeliveryStatus, DeliveryType } from "src/app/customer/inquiry/constant";
-import { CargoType } from "../cargo-type/cargo-type.listing.model";
-import { ItemType } from "../item-type/item-type.listing.model";
+import { DeliveryStatus, DeliveryType } from "src/app/admin/warehouse/inquiry/constant";
+import { CargoType } from "../../cargo-type/cargo-type.listing.model";
+import { ItemType } from "../../item-type/item-type.listing.model";
 
 export class Inquiry {
     status : DeliveryStatus;

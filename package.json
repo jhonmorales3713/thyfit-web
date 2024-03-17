@@ -22,6 +22,7 @@
     "@canvasjs/angular-charts": "^1.0.3",
     "@canvasjs/charts": "^3.7.33",
     "@ng-bootstrap/ng-bootstrap": "11.0",
+    "@ng-select/ng-select": "^10.0.4",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^4.6.0",
     "boxicons": "^2.1.4",

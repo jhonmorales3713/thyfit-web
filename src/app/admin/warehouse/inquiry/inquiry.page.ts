@@ -8,11 +8,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { InquiryService } from './inquiry.service';
 import { InquiryListingOption } from './inquiry.listing-option';
 import { Inquiry } from './inquiry.model';
-import { ItemTypeService } from '../item-type/item-type.service';
-import { CargoTypeService } from '../cargo-type/cargo-type.service';
-import { ItemType } from '../item-type/item-type.listing.model';
-import { CargoType } from '../cargo-type/cargo-type.listing.model';
-import { DeliveryStatus, DeliveryStatuses, DeliveryType, DeliveryTypes } from 'src/app/customer/inquiry/constant';
+import { ItemTypeService } from '../../item-type/item-type.service';
+import { CargoTypeService } from '../../cargo-type/cargo-type.service';
+import { ItemType } from '../../item-type/item-type.listing.model';
+import { CargoType } from '../../cargo-type/cargo-type.listing.model';
+import { DeliveryStatus, DeliveryStatuses, DeliveryType, DeliveryTypes } from 'src/app/admin/warehouse/inquiry/constant';
 import { GenericPage } from 'src/app/shared/generic.page';
 import { PermissionService } from 'src/app/shared/services/permission.service';
 

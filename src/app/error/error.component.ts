@@ -9,6 +9,5 @@ export class ErrorComponent implements OnInit{
   @Input() errorCode: any;
   @Input() message: string;
   ngOnInit() {
-    console.log(this.errorCode);
   }
 }

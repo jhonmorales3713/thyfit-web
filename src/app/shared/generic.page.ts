@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, HostListener, Injectable, Input, OnInit, Output, ViewContainerRef, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InquiryService } from '../admin/inquiry/inquiry.service';
+import { InquiryService } from '../admin/warehouse/inquiry/inquiry.service';
 import { AppNotificationService } from './services/notification.service';
 import { ItemTypeService } from '../admin/item-type/item-type.service';
 import { CargoTypeService } from '../admin/cargo-type/cargo-type.service';
@@ -28,7 +28,6 @@ export class GenericPage {
   invalidAccess() {
   }
   hasPermission(permission:string) :boolean {
-    console.log(permission);
     return this.permissionService.hasPermission(permission);
   }
 }

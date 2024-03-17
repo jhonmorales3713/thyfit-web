@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardPage } from './dashboard/dashboard.page';
-import { InquiryPage } from './inquiry/inquiry.page';
-import { InquiryShowPage } from './inquiry/inquiry-show.page';
+import { InquiryPage } from './warehouse/inquiry/inquiry.page';
+import { InquiryShowPage } from './warehouse/inquiry/inquiry-show.page';
 import { VehiclePage } from './vehicle/vehicle.page';
 import { VehicleShowPage } from './vehicle/vehicle-show.page';
 import { VehicleEditPage } from './vehicle/vehicle-edit.page';
@@ -15,6 +15,9 @@ import { UserPage } from './settings/user/user.page';
 import { UserShowPage } from './settings/user/user-show.page';
 import { UserEditPage } from './settings/user/user-edit.page';
 import { AccessDeniedPage } from './access-denied/access-denied.page';
+import { ShipmentRequestPage } from './warehouse/shipment-request/shipment-request.page';
+import { ShipmentRequestShowPage } from './warehouse/shipment-request/shipment-request-show.page';
+import { ShipmentRequestEditPage } from './warehouse/shipment-request/shipment-request-edit.page';
 
 const routes: Routes = [
     {path: 'admin', redirectTo: 'home', pathMatch:'full'},
@@ -35,6 +38,9 @@ const routes: Routes = [
     {path: 'users/new', component: UserRoleNewPage},
     {path: 'users/:id', component: UserShowPage},
     {path: 'users/:id/edit', component: UserEditPage},
+    {path: 'shipment-requests', component: ShipmentRequestPage},
+    {path: 'shipment-requests/:id', component: ShipmentRequestShowPage},
+    {path: 'shipment-requests/:id/edit', component: ShipmentRequestEditPage},
 ];
 
 @NgModule({

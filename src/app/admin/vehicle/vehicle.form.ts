@@ -1,4 +1,4 @@
-import { DeliveryStatus, DeliveryType } from "src/app/customer/inquiry/constant";
+import { DeliveryStatus, DeliveryType } from "src/app/admin/warehouse/inquiry/constant";
 import { FormUtils } from "src/app/shared/form-utils";
 import { VehicleMake } from "../vehicle-make/vehicle-make.listing.model";
 import { VehicleModel } from "../vehicle-model/vehicle-model.listing.model";

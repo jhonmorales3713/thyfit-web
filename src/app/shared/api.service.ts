@@ -16,7 +16,6 @@ export class ApiService {
     constructor(
         private httpClient: HttpClient, 
     ) {
-        console.log(localStorage)
     }
     setParameters(parameters = []): ApiService {
         this.queryParams = '';

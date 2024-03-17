@@ -1,0 +1,120 @@
+<div *ngIf="hasError else content">
+    <error-component [errorCode]="T.Shared.StatusCodes.DocumentNotFound" [message]="T.ShipmentRequest.Message.ShipmentRequestNotFound"></error-component>
+</div>
+<ng-template #content>
+    <div class="row" *ngIf="isLoading">
+        <div class="col-12">
+            <div class="loader">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="shipmentRequest != null">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="nav-body d-flex">
+                    <h5 class="nav-title"><a href="admin/shipment-requests">Shipment Request</a> > Ref # {{ shipmentRequest.inquiry.referenceNumber }} <span class="field-value" [innerHTML]="ShipmentRequestStatuses.format(shipmentRequest.status)"></span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pr-3" *ngIf="shipmentRequest.canApprove || shipmentRequest.canDecline">
+            <div class="col-lg-4 offset-lg-8 p-0">
+                <div class="navbar-collapse d-flex justify-content-end mt-2">
+                    <a class="btn btn-white btn-sm mr-3" [href]="'admin/shipment-requests/'+shipmentRequest.id+'/edit'"><i class="fa fa-pencil mr-2"></i>Edit</a>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item drodpown profile-logo dropstart">
+                            <a class="nav-link dropdown-toggle btn btn-sm btn-secondary text-white p-1 pl-2" href="#" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Status
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-dark dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item cursor-pointer" *ngIf="shipmentRequest.canApprove && hasPermission(SharedPermissionList.ShipmentRequest.Approve)" (click)="approve()"><i class="text-success fa fa-thumbs-up mr-1"></i>Approve</a>
+                                <a class="dropdown-item cursor-pointer" *ngIf="shipmentRequest.canDecline && hasPermission(SharedPermissionList.ShipmentRequest.Decline)" (click)="decline()"><i class="text-danger fa fa-thumbs-down mr-1"></i>Decline</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Inquiry Reference #</label><br>
+                <span class="field-value">
+                    <a [href]="'admin/inquiries/'+shipmentRequest.inquiry.id">{{shipmentRequest.inquiry.referenceNumber}}</a></span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Consignee</label><br>
+                <span class="field-value">{{ shipmentRequest.consignee.name }}</span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Origin</label><br>
+                <span class="field-value">{{ shipmentRequest.origin }}</span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Destination</label><br>
+                <span class="field-value">{{ shipmentRequest.destination }}</span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Cargo Type</label><br>
+                <span class="field-value">{{ shipmentRequest.inquiry.cargoType.name }}</span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Item Type</label><br>
+                <span class="field-value">{{ shipmentRequest.inquiry.itemType.name }}</span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Delivery Type</label><br>
+                <span class="field-value">{{ DeliveryType.format(shipmentRequest.inquiry.deliveryType) }}</span>
+            </div>
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Vehicle</label><br>
+                <span class="field-value">
+                    <a [href]="'admin/vehicles/'+shipmentRequest.vehicle.id">{{ shipmentRequest.vehicle.plateNumber }}</a><br>
+                    <small>
+                        <b>Make:</b> {{ shipmentRequest.vehicle.make.name }}<br>
+                            <b>Model:</b> {{ shipmentRequest.vehicle.model.name }}
+                        </small>
+                </span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-4">
+                <label class="font-weight-bold field-label">Target Delivery Date</label><br>
+                <span class="field-value">{{ shipmentRequest.deliveryDate | date }}</span>
+            </div>
+        </div>
+        <div class="row pr-3">
+            <div class="col-lg-6">
+                <label class="font-weight-bold field-label">Items</label><br>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th class="text-right ">Quantity</th>
+                        </tr>
+                        <tr *ngFor="let item of shipmentRequest.items">
+                            <td>{{item.name}}</td>
+                            <td class="text-right">{{item.quantity}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row pr-3">
+            <div class="col-12 text-secondary">
+                <small><i>Created at {{ shipmentRequest.createdAt | date }}</i></small>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -7,7 +7,7 @@ import { AppNotificationService } from 'src/app/shared/services/notification.ser
 import { GenericPage } from 'src/app/shared/generic.page';
 import { VehicleService } from './vehicle.service';
 import { HttpStatusCode } from '@angular/common/http';
-import { DeliveryStatus, DeliveryStatuses } from 'src/app/customer/inquiry/constant';
+import { DeliveryStatus, DeliveryStatuses } from 'src/app/admin/warehouse/inquiry/constant';
 import { Vehicle } from './vehicle.model';
 import { VehicleStatuses, VehicleTransmissions } from './constant';
 import { PermissionService } from 'src/app/shared/services/permission.service';

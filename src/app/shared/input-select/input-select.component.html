@@ -1,11 +1,12 @@
 <div class="searchable-select">
   <div class="input-group-prepend">
-    <input type="text" [formControl]="queryControl" class="search-input form-control form-control-sm"(blur)="onInputBlur()" [placeholder]="placeholder"(focus)="onInputFocus()">
-    <span class="input-group-text"><i class="fa fa-search"></i></span>
+    <input type="text" [formControl]="queryControl" class="search-input form-control form-control-sm"(blur)="onInputBlur()" [placeholder]="placeholder"(focus)="onInputFocus()" (keyup)="onInputChange()">
+    <span class="input-group-text" *ngIf="!hideSearch"><i class="fa fa-search"></i></span>
   </div>
-  <ul class="options">
-    <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)" class="option">
-      {{ suggestion.name }}
+  <ul class="options" *ngIf="!hide">
+    <li *ngFor="let suggestion of suggestions" (mousedown)="selectSuggestion(suggestion)" class="option">
+      {{ suggestion[field] }}
+      <span [innerHTML]="suggestion.additionalFields"></span>
     </li>
   </ul>
 </div>

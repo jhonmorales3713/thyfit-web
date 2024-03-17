@@ -1,4 +1,4 @@
-import { DeliveryStatus, DeliveryType } from "src/app/customer/inquiry/constant";
+import { DeliveryStatus, DeliveryType } from "src/app/admin/warehouse/inquiry/constant";
 import { FormUtils } from "src/app/shared/form-utils";
 import { DatePipe, formatDate } from "@angular/common";
 import { FormInterface } from "src/app/shared/form.interface";

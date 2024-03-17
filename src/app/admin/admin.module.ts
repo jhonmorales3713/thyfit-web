@@ -19,8 +19,8 @@ import { LoginPage } from './login/login.page';
 import { ModalService } from '../shared/services/modal.service';
 import { AppNotificationService } from '../shared/services/notification.service';
 import { NotificationComponent } from '../shared/notification/notification.component';
-import { InquiryPage } from './inquiry/inquiry.page';
-import { InquiryShowPage } from './inquiry/inquiry-show.page';
+import { InquiryPage } from './warehouse/inquiry/inquiry.page';
+import { InquiryShowPage } from './warehouse/inquiry/inquiry-show.page';
 import { VehicleShowPage } from './vehicle/vehicle-show.page';
 import { VehiclePage } from './vehicle/vehicle.page';
 import { VehicleEditPage } from './vehicle/vehicle-edit.page';
@@ -36,6 +36,10 @@ import { UserShowPage } from './settings/user/user-show.page';
 import { UserFormComponent } from './settings/user/components/form.component';
 import { UserEditPage } from './settings/user/user-edit.page';
 import { AccessDeniedPage } from './access-denied/access-denied.page';
+import { ShipmentRequestPage } from './warehouse/shipment-request/shipment-request.page';
+import { ShipmentRequestShowPage } from './warehouse/shipment-request/shipment-request-show.page';
+import { ShipmentRequestFormComponent } from './warehouse/shipment-request/components/form.component';
+import { ShipmentRequestEditPage } from './warehouse/shipment-request/shipment-request-edit.page';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,11 @@ import { AccessDeniedPage } from './access-denied/access-denied.page';
     UserShowPage,
     UserEditPage,
     UserFormComponent,
-    AccessDeniedPage
+    AccessDeniedPage,
+    ShipmentRequestPage,
+    ShipmentRequestShowPage,
+    ShipmentRequestFormComponent,
+    ShipmentRequestEditPage
   ],
   imports: [
     SharedModule,

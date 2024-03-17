@@ -10,12 +10,12 @@
                 <ul class="list-unstyled collapse sub-menu" id="salesSubmenu" *ngIf="hasPermission(PermissionTags.InquiryTag)">
                     <li *ngIf="hasPermission(PermissionTags.InquiryTag+SharedPermission.View)">
                         <a href="admin/inquiries" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
-                            <i class="fa fa-question"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Inquiries</span>
+                            <i class="fa fa-question"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Inquiry</span>
                         </a>
                     </li>
                     <li>
-                        <a href="invoices" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
-                            <i class="fa fa-file"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Invoices</span>
+                        <a href="admin/shipment-requests" [ngClass]="sideNavVisible ? 'unshrinked-sub-list': 'shrinked-sub-list'">
+                            <i class="fa fa-file"></i> <span [ngClass]="sideNavVisible ? 'unshrinked-list': 'shrinked-list'">Shipment Request</span>
                         </a>
                     </li>
                 </ul>

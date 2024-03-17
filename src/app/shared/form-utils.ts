@@ -6,6 +6,7 @@ import { EventEmitter, Injectable, Input } from "@angular/core";
 export class FormUtils {
     errors = [];
     hasError = false;
+    isNew = false;
     submit = new EventEmitter<number>();
     static setErrors(errors: any, form: any) {
         form.errors = errors;

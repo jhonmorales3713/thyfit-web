@@ -17,6 +17,7 @@ import { NumberInputComponent } from './ui-number-input/ui-number-input';
 import { WholeNumberPipe } from './pipes/whole-number.pipe';
 import { FormatNullablePipe } from './pipes/format-nullable.pipe';
 import { InputSelectComponent } from './input-select/input-select.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { InputSelectComponent } from './input-select/input-select.component';
         CommonModule,
         NgbModule,
         ReactiveFormsModule,
+        NgSelectModule,
     ],
     declarations: [
         UiErrorComponent,
@@ -59,6 +61,7 @@ import { InputSelectComponent } from './input-select/input-select.component';
         FormatNullablePipe,
         ErrorComponent,
         InputSelectComponent,
+        NgSelectModule
     ],
 })
 export class SharedModule { }

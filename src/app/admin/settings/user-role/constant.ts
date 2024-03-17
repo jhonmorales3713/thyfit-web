@@ -1,5 +1,6 @@
-import { TAG as INQUIRYTAG, InquiryPermissions } from "src/app/customer/inquiry/constant";
+import { TAG as INQUIRYTAG, InquiryPermissions } from "src/app/admin/warehouse/inquiry/constant";
 import { TAG_DESCRIPTION, TAG_DESCRIPTION as VEHICLEDESCIPTION, TAG as VEHICLETAG, VehiclePermissions } from "../../vehicle/constant";
+import { ShipmentRequestPermissions } from "../../warehouse/shipment-request/constant";
 
 export enum UserRoleStatus {
     Active = 'activ',
@@ -18,6 +19,7 @@ export class UserRoleStatuses {
 export const Permissions = [
     InquiryPermissions,
     VehiclePermissions,
+    ShipmentRequestPermissions,
 ];
 export const PermissionTags = {
     InquiryTag : INQUIRYTAG

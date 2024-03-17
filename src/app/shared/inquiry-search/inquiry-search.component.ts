@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CargoTypeService } from 'src/app/admin/cargo-type/cargo-type.service';
-import { InquiryService } from 'src/app/admin/inquiry/inquiry.service';
+import { InquiryService } from 'src/app/admin/warehouse/inquiry/inquiry.service';
 import { AppNotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({

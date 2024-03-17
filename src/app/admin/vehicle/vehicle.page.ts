@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleService } from './vehicle.service';
 import { CargoTypeService } from '../cargo-type/cargo-type.service';
 import { CargoType } from '../cargo-type/cargo-type.listing.model';
-import { DeliveryStatus, DeliveryStatuses, DeliveryType, DeliveryTypes } from 'src/app/customer/inquiry/constant';
+import { DeliveryStatus, DeliveryStatuses, DeliveryType, DeliveryTypes } from 'src/app/admin/warehouse/inquiry/constant';
 import { GenericPage } from 'src/app/shared/generic.page';
 import { Vehicle } from './vehicle.model';
 import { VehicleListingOption } from './vehicle.listing-option';

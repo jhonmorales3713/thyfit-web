@@ -1,13 +1,28 @@
+/* Add these styles to your component's CSS file */
 
 .searchable-select {
   position: relative;
-  display: inline-block;
 }
 
 .search-input {
   width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
+.input-group-prepend {
+  display: flex;
+  align-items: center;
+}
+
+.input-group-text {
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
 .options {
   position: absolute;
   z-index: 1;

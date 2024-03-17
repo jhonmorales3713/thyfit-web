@@ -56,6 +56,5 @@ export class UserFormComponent implements OnInit{
   }
   removePermission(permission: UserRoleFragment) {
     this.form.roles = this.form.roles.filter(it => it.id !== permission.id);
-    console.log(this.form.roles);
   }
 }

@@ -11,7 +11,7 @@ export class UserRole extends FormUtils{
     canActive: boolean;
     canInactive: boolean;
     isChecked(permission: string) {
-      return this.isAdmin || this.permissions.includes(permission);
+      return this.permissions.includes(permission);
     }
     get permissions () {
       return this.access.split(',');

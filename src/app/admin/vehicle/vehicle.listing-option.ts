@@ -1,4 +1,4 @@
-import { DeliveryStatus, DeliveryType } from "src/app/customer/inquiry/constant";
+import { DeliveryStatus, DeliveryType } from "src/app/admin/warehouse/inquiry/constant";
 import { ItemType } from "../item-type/item-type.listing.model";
 import { CargoType } from "../cargo-type/cargo-type.listing.model";
 import { VehicleMake } from "../vehicle-make/vehicle-make.listing.model";
@@ -24,4 +24,8 @@ export class VehicleListingOption {
     registryExpirationTo: Date;
     lastMaintennanceDateFrom: Date;
     lastMaintennanceDateTo: Date;
+}
+
+export class VehicleDropdownListingOption {
+    plateNumber : string;
 }

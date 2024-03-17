@@ -8,7 +8,7 @@ import { GenericPage } from 'src/app/shared/generic.page';
 import { InquiryService } from './inquiry.service';
 import { Inquiry } from './inquiry.model';
 import { HttpStatusCode } from '@angular/common/http';
-import { DeliveryStatus, DeliveryStatuses, TAG } from 'src/app/customer/inquiry/constant';
+import { DeliveryStatus, DeliveryStatuses, TAG } from 'src/app/admin/warehouse/inquiry/constant';
 import { PermissionService } from 'src/app/shared/services/permission.service';
 import { SharedPermissions } from 'src/app/shared/constant';
 @Component({
@@ -51,7 +51,6 @@ export class InquiryShowPage extends GenericPage implements OnInit{
           this.isLoading = false;
           this.notification.success("Success","Inquiry Updated!");
         }, error: (inquiry) => {
-          console.log(inquiry);
           this.notification.error("Inquiry", inquiry.error.message);
         }
       });
@@ -64,7 +63,6 @@ export class InquiryShowPage extends GenericPage implements OnInit{
           this.isLoading = false;
           this.notification.success("Success","Inquiry Updated!");
         }, error: (inquiry) => {
-          console.log(inquiry);
           this.notification.error("Inquiry", inquiry.error.message);
         }
       });
