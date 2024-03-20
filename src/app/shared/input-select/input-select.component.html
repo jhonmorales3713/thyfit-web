@@ -1,5 +1,5 @@
 <div class="searchable-select">
-  <div class="input-group-prepend">
+  <div class="input-group-prepend" [ngClass]="{'control-error' : hasError}">
     <input type="text" [formControl]="queryControl" class="search-input form-control form-control-sm"(blur)="onInputBlur()" [placeholder]="placeholder"(focus)="onInputFocus()" (keyup)="onInputChange()">
     <span class="input-group-text" *ngIf="!hideSearch"><i class="fa fa-search"></i></span>
   </div>

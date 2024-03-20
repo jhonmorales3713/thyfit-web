@@ -10,6 +10,7 @@ export const SharedPermissions = {
     Approve : 'appro',
     Decline : 'decli',
 }
+export const BlankDash = '--';
 export const SharedPermissionList = {
     Inquiry : {
         View : InquiryTag+SharedPermissions.View,
@@ -19,6 +20,5 @@ export const SharedPermissionList = {
     ShipmentRequest : {
         View : ShipmentRequestTag+SharedPermissions.View,
         Approve : ShipmentRequestTag+SharedPermissions.Approve,
-        Decline : ShipmentRequestTag+SharedPermissions.Decline,
     }
 }

@@ -40,6 +40,7 @@ import { ShipmentRequestPage } from './warehouse/shipment-request/shipment-reque
 import { ShipmentRequestShowPage } from './warehouse/shipment-request/shipment-request-show.page';
 import { ShipmentRequestFormComponent } from './warehouse/shipment-request/components/form.component';
 import { ShipmentRequestEditPage } from './warehouse/shipment-request/shipment-request-edit.page';
+import { ShipmentRequestNewPage } from './warehouse/shipment-request/shipment-request-new.page';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ShipmentRequestEditPage } from './warehouse/shipment-request/shipment-r
     ShipmentRequestPage,
     ShipmentRequestShowPage,
     ShipmentRequestFormComponent,
-    ShipmentRequestEditPage
+    ShipmentRequestEditPage,
+    ShipmentRequestNewPage
   ],
   imports: [
     SharedModule,

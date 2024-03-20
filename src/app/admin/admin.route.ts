@@ -18,6 +18,7 @@ import { AccessDeniedPage } from './access-denied/access-denied.page';
 import { ShipmentRequestPage } from './warehouse/shipment-request/shipment-request.page';
 import { ShipmentRequestShowPage } from './warehouse/shipment-request/shipment-request-show.page';
 import { ShipmentRequestEditPage } from './warehouse/shipment-request/shipment-request-edit.page';
+import { ShipmentRequestNewPage } from './warehouse/shipment-request/shipment-request-new.page';
 
 const routes: Routes = [
     {path: 'admin', redirectTo: 'home', pathMatch:'full'},
@@ -39,6 +40,7 @@ const routes: Routes = [
     {path: 'users/:id', component: UserShowPage},
     {path: 'users/:id/edit', component: UserEditPage},
     {path: 'shipment-requests', component: ShipmentRequestPage},
+    {path: 'shipment-requests/new', component: ShipmentRequestNewPage},
     {path: 'shipment-requests/:id', component: ShipmentRequestShowPage},
     {path: 'shipment-requests/:id/edit', component: ShipmentRequestEditPage},
 ];

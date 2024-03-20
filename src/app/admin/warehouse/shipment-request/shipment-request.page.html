@@ -17,6 +17,9 @@
         </div>
     </div>
     <div class="col-12 col-md-12 col-lg-2">
+        <div class="d-flex justify-content-end">
+            <a [href]="'admin/shipment-requests/new'" class="btn btn-success btn-sm"><i class="fa fa-plus mr-1"></i> Shipment Request</a>
+        </div>
         <div class="navbar-collapse d-flex justify-content-end mt-2">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item drodpown profile-logo dropstart">
@@ -101,7 +104,7 @@
                     <th (click)="sortBy('deliveryDate')"><th-arrow [sortDirection]="sortDirection" [sort]="this.listingOption.sortBy" [name]="'deliveryDate'" [description]="'Delivery Date'"></th-arrow></th>
                 </tr>
                 <tr *ngFor="let request of requests">
-                    <td><a [href]="'admin/shipment-requests/'+request.id">{{ request.referenceNumber }}</a> <span class="field-value ml-2" [innerHTML]="DeliveryStatus.format(request.status)"></span></td>
+                    <td><a [href]="'admin/shipment-requests/'+request.id">{{ request.referenceNumber }}</a> <span class="field-value ml-2" [innerHTML]="ShipmentRequestStatuses.format(request.status)"></span></td>
                     <td>{{ request.consignee.name }}</td>
                     <td>{{ request.origin }}</td>
                     <td>{{ request.destination }}</td>

@@ -12,18 +12,22 @@
     <form (ngForm)="form" *ngIf="!isLoading" (ngSubmit)="submit()">
         <div class="row">
             <div class="col-md-4">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('inquiry_id')}">
                     <label class="form-label">Inquiry Reference #</label>
-                    <div class="input-group">
-                        {{ form.inquiry.referenceNumber }}
+                    <div class="input-group"*ngIf="!form.isNew">
+                            {{ form.inquiry.referenceNumber }}
+                    </div>
+                    <div class="input-group"*ngIf="form.isNew">
+                        <input-select [searchService]="inquiryService" [(model)]="form.inquiry" [modelType]="InquiryFragment" [field]="'referenceNumber'" [hideSearch]="true" [params]="inquiryParams"></input-select>
+                        <ui-error name="inquiry_id" [form]="form" *ngIf="form.hasControlError('inquiry_id')"></ui-error> 
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('consignee')}">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('consignee_id')}">
                     <label class="form-label">Consignee</label><br>
-                    <input-select [searchService]="consigneeService" [(model)]="form.consignee" [hideSearch]="true" [params]="consigneeParams"></input-select>
-                    <ui-error name="consignee" [form]="form" *ngIf="form.hasControlError('consignee')"></ui-error> 
+                    <input-select [searchService]="consigneeService" [(model)]="form.consignee" [modelType]="InquiryFragment" [hideSearch]="true" [params]="consigneeParams"></input-select>
+                    <ui-error name="consignee_id" [form]="form" *ngIf="form.hasControlError('consignee_id')"></ui-error> 
                 </div>
             </div>
         </div>
@@ -52,7 +56,7 @@
                 <div class="form-group">
                     <label class="form-label">Cargo Type</label>
                     <div class="input-group">
-                        {{ form.inquiry.cargoType.name }}
+                        {{ form.inquiry.referenceNumber != null ? form.inquiry.cargoType.name : BlankDash }}
                     </div>
                 </div>
             </div>
@@ -60,7 +64,7 @@
                 <div class="form-group">
                     <label class="form-label">Item Type</label>
                     <div class="input-group">
-                        {{ form.inquiry.itemType.name }}
+                        {{ form.inquiry.referenceNumber != null ? form.inquiry.itemType.name : BlankDash }}
                     </div>
                 </div>
             </div>
@@ -70,36 +74,37 @@
                 <div class="form-group">
                     <label class="form-label">Delivery Type</label>
                     <div class="input-group">
-                        {{ DeliveryType.format(form.inquiry.deliveryType) }}
+                        {{ form.inquiry ? DeliveryType.format(form.inquiry.deliveryType) : BlankDash }}
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('vehicle')}">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('vehicle_id')}">
                     <label class="form-label">Vehicle</label><br>
-                    <input-select [searchService]="vehicleService" [(model)]="form.vehicle" [hideSearch]="true" [params]="vehicleParams" [field]="'plateNumber'" [additionalFields]="[{'label':'Make','field':'make.name'},{'label':'Model','field':'model.name'}]"></input-select>
+                    <input-select [searchService]="vehicleService" [(model)]="form.vehicle" [hasError]="form.hasControlError('vehicle_id')" [modelType]="VehicleFragment" [hideSearch]="true" [params]="vehicleParams" [field]="'plateNumber'" [additionalFields]="[{'label':'Make','field':'make.name'},{'label':'Model','field':'model.name'}]"></input-select>
                     <div *ngIf="form.vehicle">
                         <small><b>Make</b>: {{form.vehicle.make.name}}</small><br>
                         <small><b>Model</b>: {{form.vehicle.model.name}}</small><br>
                     </div>
-                    <ui-error name="vehicle" [form]="form" *ngIf="form.hasControlError('vehicle')"></ui-error> 
+                    <ui-error name="vehicle_id" [form]="form" *ngIf="form.hasControlError('vehicle_id')"></ui-error> 
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('deliveryDate')}">
+                <div class="form-group" [ngClass]="{'control-error' : form.hasControlError('estimatedDeliveryDate')}">
                     <label class="form-label">Target Delivery Date</label>
                     <div class="input-group">
                         <input type="date" name="deliveryDate" class="form-control form-control-sm" placeholder="Target Delivery Date" [(ngModel)]="form.deliveryDate">
                     </div>
-                    <ui-error name="vehicle" [form]="form" *ngIf="form.hasControlError('deliveryDate')"></ui-error> 
+                    <ui-error name="estimatedDeliveryDate" [form]="form" *ngIf="form.hasControlError('estimatedDeliveryDate')"></ui-error> 
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <label class="font-weight-bold field-label">Items</label><br>
+                <ui-error name="shipmentRequestItems" [form]="form" *ngIf="form.hasControlError('shipmentRequestItems')"></ui-error> 
                 <div class="table-responsive">
                     <table class="table">
                         <tr>
@@ -109,15 +114,15 @@
                         </tr>
                         <tr *ngFor="let item of form.items; let i = index;">
                             <td>  
-                                <input type="text" [name]="i+item.name" class="form-control form-control-sm" placeholder="Name" [(ngModel)]="item.name">
-                                <ui-error [name]="i+item.name" [form]="form" *ngIf="form.hasControlError(i+item.name)"></ui-error> 
+                                <input type="text" [name]="'shipmentRequestItems'+i+'.name'" class="form-control form-control-sm" placeholder="Name" [(ngModel)]="item.name" (ngModelChange)="onChange()">
+                                <ui-error [name]="'shipmentRequestItems.'+i+'.name'" [form]="form" *ngIf="form.hasControlError('shipmentRequestItems.'+i+'.name')"></ui-error> 
                             </td>
                             <td class="text-right">  
-                                <input type="text" [name]="i+item.quantity.toString()" class="form-control form-control-sm" placeholder="Quantity" [(ngModel)]="item.quantity">
-                                <ui-error [name]="item.quantity" [form]="form" *ngIf="form.hasControlError(form.items[i].quantity.toString())"></ui-error> 
+                                <input type="number" [name]="'shipmentRequestItems'+i+'.quantity'" class="form-control form-control-sm" placeholder="Quantity" [(ngModel)]="item.quantity" (ngModelChange)="onChange()">
+                                <ui-error [name]="'shipmentRequestItems.'+i+'.quantity'" [form]="form" *ngIf="form.hasControlError('shipmentRequestItems.'+i+'.quantity')"></ui-error> 
                             </td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-danger" (click)="removeItem(item)"><i class="fa fa-times"></i></button>
+                                <button type="button" *ngIf="i < form.items.length - 1" class="btn btn-sm btn-danger" (click)="removeItem(item)"><i class="fa fa-times"></i></button>
                             </td>
                         </tr>
                     </table>

@@ -21,14 +21,18 @@ export class InputSelectComponent {
   @Input() searchService: any;
   @Input() hideSearch : boolean;
   @Input() model : any;
+  @Input() modelType : any;
   @Input() params : any;
   @Input() field: string = 'name';
+  @Input() hasError = false;
   @Input() additionalFields: any = [];
 
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.model);
+    if (!this.model) {
+      this.model = new this.modelType();
+    }
     this.queryControl.setValue(this.model ? this.model[this.field] : null);
     this.queryControl.valueChanges.pipe(
       debounceTime(200),
@@ -37,11 +41,12 @@ export class InputSelectComponent {
     ).subscribe((suggestions:any) => {
       this.suggestions = [];
       this.hide = this.queryControl.value == null || this.queryControl.value == "" || this.hasSelected;
+      console.log(this.hide);
       this.loadSuggestion(suggestions);
     });
   }
   loadSuggestion(suggestions) {
-    this.hide = false;
+    // this.hide = false;
     suggestions.forEach(item => {
       let label = '';
       if (this.additionalFields.length > 0) {
@@ -71,7 +76,6 @@ export class InputSelectComponent {
     this.suggestions = [];
     if (this.model) {
       this.modelChange.emit(suggestion); // Emit the selected suggestion to ngModel
-      console.log(suggestion);
     } else {
       this.queryControl.setValue(null);
       this.modelChange.emit(suggestion); // Emit the selected suggestion to ngModel

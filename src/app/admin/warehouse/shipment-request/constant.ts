@@ -18,7 +18,7 @@ export class ShipmentRequestStatuses {
                 return '<span class="badge badge-secondary">Pending</span>';
             break;
             case ShipmentRequestStatus.Approved:
-                return '<span class="badge badge-success">Received</span>';
+                return '<span class="badge badge-success">Approved</span>';
             break;
             case ShipmentRequestStatus.Declined:
                 return '<span class="badge badge-danger">Declined</span>';

@@ -47,7 +47,7 @@ export class ShipmentRequestShowPage extends GenericPage implements OnInit{
       });
     }
     decline() {
-      this.shipmentRequestService.invalid(this.id).subscribe({
+      this.shipmentRequestService.decline(this.id).subscribe({
         next: (shipmentRequest) => {
           this.shipmentRequest = shipmentRequest["data"];
           this.isLoading = false;
@@ -58,7 +58,18 @@ export class ShipmentRequestShowPage extends GenericPage implements OnInit{
       });
     }
     approve() {
-      this.shipmentRequestService.receive(this.id).subscribe({
+      this.shipmentRequestService.approve(this.id).subscribe({
+        next: (shipmentRequest) => {
+          this.shipmentRequest = shipmentRequest["data"];
+          this.isLoading = false;
+          this.notification.success("Success","Shipment Request Updated!");
+        }, error: (shipmentRequest) => {
+          this.notification.error("Shipment Request", shipmentRequest.error.message);
+        }
+      });
+    }
+    unapprove() {
+      this.shipmentRequestService.unapprove(this.id).subscribe({
         next: (shipmentRequest) => {
           this.shipmentRequest = shipmentRequest["data"];
           this.isLoading = false;

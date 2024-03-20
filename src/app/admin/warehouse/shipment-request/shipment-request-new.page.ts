@@ -10,10 +10,11 @@ import { PermissionService } from 'src/app/shared/services/permission.service';
 import { ShipmentRequestForm, ShipmentRequestItem } from './shipment-request.form';
 import { ShipmentRequestService } from './shipment-request.service';
 import { ShipmentRequestStatuses } from './constant';
+import { InquiryFragment } from '../inquiry/inquiry.fragment';
 @Component({
-  templateUrl: './shipment-request-edit.page.html',
+  templateUrl: './shipment-request-new.page.html',
 })
-export class ShipmentRequestEditPage extends GenericPage implements OnInit{
+export class ShipmentRequestNewPage extends GenericPage implements OnInit{
     T = Translations;
     isLoading = true;
     id: number;
@@ -30,24 +31,17 @@ export class ShipmentRequestEditPage extends GenericPage implements OnInit{
     }
     ngOnInit() {
       this.notification.setRootViewContainerRef(this.container);
-      // show error
-      this.id = this.activatedRoute.snapshot.params["id"];
-      this.shipmentRequestService.show(this.id).subscribe({
-        next: (shipmentRequest) => {
-          this.shipmentRequest = new ShipmentRequestForm();
-          this.shipmentRequest.fill(shipmentRequest["data"]);
-          this.isLoading = false;
-          this.shipmentRequest.autoAdd();
-        }, error: (shipmentRequest) => {
-          this.hasError = true;
-        }
-      });
+      this.shipmentRequest = new ShipmentRequestForm();
+      this.shipmentRequest.autoAdd();
+      this.shipmentRequest.inquiry = new InquiryFragment();
+      this.shipmentRequest.isNew = true;
+      this.isLoading = false;
     }
     submit(result: any) {
       if(result.httpStatusCode === HttpStatusCode.Ok) {
-        this.notification.success("Success", "Shipment Request Updated.");
+        this.notification.success("Success", "Shipment Request Created.");
         setTimeout(() => {
-          this.route.navigate(["/admin/shipment-requests/"+this.id]);
+          this.route.navigate(["/admin/shipment-requests/"+result.data.data.id]);
         }, 1000);
       } else {
         this.notification.error("Error", "Please check your input.");

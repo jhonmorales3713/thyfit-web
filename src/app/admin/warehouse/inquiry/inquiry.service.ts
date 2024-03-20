@@ -29,7 +29,7 @@ export class InquiryService extends ApiService {
     if (options) {
       this.setParameters(options);
     }
-    let request = this.getRequest('itemtype/dropdown');
+    let request = this.getRequest('inquiry/dropdown?'+this.queryParams);
     return request;
   }
   inquiries (options: any) {

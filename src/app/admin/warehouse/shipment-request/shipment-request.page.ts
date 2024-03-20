@@ -15,6 +15,7 @@ import { GenericPage } from 'src/app/shared/generic.page';
 import { PermissionService } from 'src/app/shared/services/permission.service';
 import { ShipmentRequestService } from './shipment-request.service';
 import { ShipmentRequestListing } from './shipment-request.model';
+import { ShipmentRequestStatuses } from './constant';
 
 @Component({
   templateUrl: './shipment-request.page.html'
@@ -27,6 +28,7 @@ export class ShipmentRequestPage extends GenericPage implements OnInit {
   typingTimer: any;
   sortDirection = '+';
   DeliveryStatus = DeliveryStatuses;
+  ShipmentRequestStatuses = ShipmentRequestStatuses;
   DelStatus = DeliveryStatus;
   doneTypingInterval: number = 500; // Adjust this according to your preference
   data: string;

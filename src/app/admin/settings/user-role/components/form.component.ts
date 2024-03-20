@@ -14,7 +14,7 @@ import { Permissions } from '../constant';
     selector: 'user-role-form',
     templateUrl: './form.component.html',
 })
-export class UserRoleFormComponent implements OnInit{
+export class UserRoleFormComponent {
     T = Translations;
     id: number;
     isLoading = false;
@@ -25,8 +25,6 @@ export class UserRoleFormComponent implements OnInit{
     @Output() submitForm = new EventEmitter<{httpStatusCode: HttpStatusCode, data: any}>();
     constructor(
       private userRoleService: UserRoleService,) {
-    }
-    ngOnInit() {
     }
     submit() {
       // submitForm

@@ -18,12 +18,16 @@ export class ShipmentRequestService extends ApiService {
     let request = this.getRequest('shipment-request/show/' + id);
     return request;
   }
-  receive (id:number) {
-    let request = this.getRequest('shipment-request/receive/' + id);
+  unapprove (id:number) {
+    let request = this.getRequest('shipment-request/unapprove/' + id);
     return request;
   }
-  invalid (id:number) {
-    let request = this.getRequest('shipment-request/invalid/' + id);
+  decline (id:number) {
+    let request = this.getRequest('shipment-request/decline/' + id);
+    return request;
+  }
+  approve (id:number) {
+    let request = this.getRequest('shipment-request/approve/' + id);
     return request;
   }
   dropdown(options: any = null) {  

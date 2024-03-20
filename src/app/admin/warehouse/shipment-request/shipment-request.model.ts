@@ -39,6 +39,7 @@ export interface ShipmentRequest {
     destination: string;
     canApprove: boolean;
     canDecline: boolean;
+    canUnapprove: boolean;
 }
 export interface ShipmentRequestItem {
     name: string;

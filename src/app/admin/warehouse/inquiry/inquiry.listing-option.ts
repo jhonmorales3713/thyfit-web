@@ -14,3 +14,6 @@ export class InquiryListingOption {
     targetDateFrom: Date;;
     targetDateTo: Date;;
 }
+export class InquiryDropdownListingOption {
+    referenceNumber: string;
+}

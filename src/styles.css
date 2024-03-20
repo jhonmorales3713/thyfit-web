@@ -21,7 +21,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 .control-error input,.control-error select {
-  border: 1px solid red;
+  border: 1px solid red !important;
 }
 .login, .login-background {
   height: 100vh;
